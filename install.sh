@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+# Git Bash on Windows: シンボリックリンクを有効にする（要: 開発者モード）
+export MSYS=winsymlinks:nativestrict
+
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "=== dotfiles install ==="

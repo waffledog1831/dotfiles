@@ -13,23 +13,17 @@ dotfiles/
 │   └── .gitconfig       # Git のユーザー設定
 ├── scripts/
 │   └── ubuntu.bat       # WSL (Ubuntu) 起動スクリプト
+├── install.sh           # セットアップスクリプト
 └── .gitignore
 ```
 
 ## セットアップ
 
-### Git
-
 ```bash
-cp git/.gitconfig ~/.gitconfig
+bash install.sh
 ```
 
-### Claude Code
-
-```bash
-cp claude/CLAUDE.md ~/.claude/CLAUDE.md
-cp claude/settings.json ~/.claude/settings.json
-```
+各設定ファイルが `~` 以下にシンボリックリンクで配置される。
 
 ### WSL ショートカット
 

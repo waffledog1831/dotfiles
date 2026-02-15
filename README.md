@@ -15,8 +15,6 @@ dotfiles/
 │   └── .tmux.conf       # tmux の設定（WSL 用）
 ├── wezterm/
 │   └── .wezterm.lua     # WezTerm の設定（PowerShell 7 / C:\project）
-├── scripts/
-│   └── ubuntu.bat       # WSL (Ubuntu) 起動スクリプト
 ├── install.sh           # セットアップスクリプト
 └── .gitignore
 ```
@@ -40,6 +38,6 @@ bash install.sh
 
 各設定ファイルが `~` 以下にシンボリックリンクで配置される。
 
-### WSL ショートカット
+### WSL (Ubuntu) の起動
 
-`scripts/ubuntu.bat` をダブルクリック、またはお好みの場所にコピーして使用。
+WezTerm で `Ctrl+Shift+L` → 「Ubuntu」を選択。

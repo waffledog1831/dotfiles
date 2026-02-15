@@ -25,4 +25,9 @@ config.hide_tab_bar_if_only_one_tab = true
 config.default_prog = { "pwsh.exe" }
 config.default_cwd = "C:/project"
 
+-- ランチャーメニュー（Ctrl+Shift+L で開く）
+config.launch_menu = {
+  { label = "Ubuntu", args = { "wsl.exe", "-d", "Ubuntu", "--cd", "~" } },
+}
+
 return config

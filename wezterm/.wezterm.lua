@@ -21,7 +21,8 @@ config.window_background_opacity = 0.92
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 
--- デフォルトのシェル（WSL Ubuntu を起動）
-config.default_domain = "WSL:Ubuntu"
+-- デフォルトのシェル（PowerShell 7）
+config.default_prog = { "pwsh.exe" }
+config.default_cwd = "C:/project"
 
 return config

@@ -14,7 +14,7 @@ dotfiles/
 ├── tmux/
 │   └── .tmux.conf       # tmux の設定（WSL 用）
 ├── wezterm/
-│   └── .wezterm.lua     # WezTerm の設定
+│   └── .wezterm.lua     # WezTerm の設定（PowerShell 7 / C:\project）
 ├── scripts/
 │   └── ubuntu.bat       # WSL (Ubuntu) 起動スクリプト
 ├── install.sh           # セットアップスクリプト
@@ -25,9 +25,12 @@ dotfiles/
 
 ### 前提条件（Windows）
 
-シンボリックリンクの作成に **開発者モード** が必要。
-
-設定 → システム → 開発者向け → 開発者モード: ON
+- シンボリックリンクの作成に **開発者モード** が必要
+  - 設定 → システム → 開発者向け → 開発者モード: ON
+- **PowerShell 7** のインストール（WezTerm のデフォルトシェル）
+  ```
+  winget install Microsoft.PowerShell
+  ```
 
 ### インストール
 

@@ -25,9 +25,14 @@ config.hide_tab_bar_if_only_one_tab = true
 config.default_prog = { "pwsh.exe" }
 config.default_cwd = "C:/project"
 
--- ランチャーメニュー（Ctrl+Shift+L で開く）
+-- ランチャーメニュー（Alt+l で開く）
 config.launch_menu = {
   { label = "Ubuntu", args = { "wsl.exe", "-d", "Ubuntu", "--cd", "~" } },
+}
+
+-- キーバインド
+config.keys = {
+  { key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
 }
 
 return config

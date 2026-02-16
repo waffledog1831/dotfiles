@@ -33,6 +33,7 @@ config.launch_menu = {
 -- キーバインド
 config.keys = {
   { key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
+  { key = "w", mods = "ALT", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
 }
 
 return config

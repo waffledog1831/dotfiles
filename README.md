@@ -11,8 +11,6 @@ dotfiles/
 │   └── settings.json    # Claude Code の権限・設定
 ├── git/
 │   └── .gitconfig       # Git のユーザー設定
-├── tmux/
-│   └── .tmux.conf       # tmux の設定（WSL 用）
 ├── wezterm/
 │   └── .wezterm.lua     # WezTerm の設定（PowerShell 7 / C:\project）
 ├── install.sh           # セットアップスクリプト

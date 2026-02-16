@@ -2,7 +2,6 @@
 name: create-skill
 description: ユーザーの要望に基づいてClaude Code用のカスタムスキル（SKILL.md）を新規作成する。
 argument-hint: "[スキルの説明や要望]"
-disable-model-invocation: true
 ---
 
 ユーザーの要望に基づいて、Claude Code用のカスタムスキルを作成します。

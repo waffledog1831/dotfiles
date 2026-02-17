@@ -23,6 +23,12 @@ echo "linked: ~/.claude/settings.json"
 echo "linked: ~/.claude/skills"
 echo "linked: ~/.claude/agents"
 
+# Sakura Editor
+SAKURA_DIR="$HOME/AppData/Roaming/sakura"
+mkdir -p "$SAKURA_DIR"
+ln -sf "$DOTFILES_DIR/sakura/sakura.ini" "$SAKURA_DIR/sakura.ini"
+echo "linked: $SAKURA_DIR/sakura.ini"
+
 # WezTerm
 ln -sf "$DOTFILES_DIR/wezterm/.wezterm.lua" "$HOME/.wezterm.lua"
 echo "linked: ~/.wezterm.lua"

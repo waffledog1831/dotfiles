@@ -33,4 +33,11 @@ echo "linked: $SAKURA_DIR/sakura.ini"
 ln -sf "$DOTFILES_DIR/wezterm/.wezterm.lua" "$HOME/.wezterm.lua"
 echo "linked: ~/.wezterm.lua"
 
+# Neovim (LazyVim)
+NVIM_CONFIG_DIR="$HOME/AppData/Local/nvim"
+mkdir -p "$NVIM_CONFIG_DIR"
+ln -sf "$DOTFILES_DIR/nvim/init.lua" "$NVIM_CONFIG_DIR/init.lua"
+ln -sf "$DOTFILES_DIR/nvim/lua" "$NVIM_CONFIG_DIR/lua"
+echo "linked: $NVIM_CONFIG_DIR"
+
 echo "=== done ==="

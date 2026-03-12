@@ -12,7 +12,6 @@ claude/
 ├── settings.json    # 権限・動作設定
 ├── skills/          # カスタムスキル（/コマンド で呼び出し）
 │   ├── summon/
-│   ├── create-skill/
 │   ├── tdd/
 │   └── review-pr/
 └── agents/          # カスタムエージェント（未作成）

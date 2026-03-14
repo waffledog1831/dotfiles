@@ -10,7 +10,9 @@ echo "=== dotfiles install ==="
 
 # Git
 ln -sf "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+ln -sf "$DOTFILES_DIR/git/.gitignore_global" "$HOME/.gitignore_global"
 echo "linked: ~/.gitconfig"
+echo "linked: ~/.gitignore_global"
 
 # Claude Code
 mkdir -p "$HOME/.claude"

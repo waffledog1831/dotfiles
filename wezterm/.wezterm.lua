@@ -125,7 +125,7 @@ end)
 
 -- デフォルトのシェル（PowerShell 7）
 config.default_prog = { "pwsh.exe" }
-config.default_cwd = "C:/project"
+config.default_cwd = "C:/repos"
 
 -- ランチャーメニュー（Alt+l で開く）
 config.launch_menu = {

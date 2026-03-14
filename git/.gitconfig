@@ -3,3 +3,4 @@
 	email = waffledog1831@gmail.com
 [core]
 	autocrlf = false
+	excludesfile = ~/.gitignore_global

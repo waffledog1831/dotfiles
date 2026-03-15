@@ -62,6 +62,9 @@
   },
   "language": "japanese",
   "autoUpdatesChannel": "latest",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "respectGitignore": true,
   "showTurnDuration": true,
   "attribution": {

@@ -11,9 +11,10 @@ claude/
 ├── CLAUDE.md        # カスタム指示（人格・回答スタイル）
 ├── settings.json    # 権限・動作設定
 ├── skills/          # カスタムスキル（/コマンド で呼び出し）
-│   ├── summon/
-│   ├── tdd/
-│   └── review-pr/
+│   ├── commit/
+│   ├── create-pr/
+│   ├── review-pr/
+│   └── summon/
 └── agents/          # カスタムエージェント（冒険者ギルド）
 ```
 

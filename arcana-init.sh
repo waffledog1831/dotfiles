@@ -2,10 +2,10 @@
 set -euo pipefail
 
 # ============================================================
-# arcana-init.sh — 冒険者ギルド「Arcana」書庫の初期化
+# arcana-init.sh — 冒険者ギルド「Arcana」の設立
 #
 # 任意のプロジェクトディレクトリで実行すると、
-# arcana/ ディレクトリ（書庫）を作成します。
+# arcana/（ギルド拠点）を作成します。
 #
 # Usage:
 #   bash /path/to/dotfiles/arcana-init.sh
@@ -18,7 +18,7 @@ if [ -d "$ARCANA_DIR" ]; then
   exit 0
 fi
 
-echo "=== Arcana 書庫を初期化します ==="
+echo "=== 冒険者ギルド「Arcana」を設立します ==="
 
 # ディレクトリ作成
 mkdir -p "$ARCANA_DIR/quests"
@@ -27,23 +27,24 @@ mkdir -p "$ARCANA_DIR/grimoire"
 
 # ギルドルール
 cat > "$ARCANA_DIR/RULES.md" << 'EOF'
-# Arcana 書庫 — ギルドルール
+# 冒険者ギルド「Arcana」— ギルドルール
 
-冒険者ギルド「Arcana」の書庫運用ルールです。
+このディレクトリは冒険者ギルド「Arcana」の拠点です。
+クエストの管理、冒険の記録、得られた知識の保管を行います。
 
-## 構成
+## 拠点の構成
 
 ```
-arcana/
-├── quests/        # クエスト掲示板 — クエストの管理
-├── chronicles/    # 年代記 — クエストの詳細記録（ログ）
-├── grimoire/      # 魔導書 — ナレッジベース（知識・手順）
-└── RULES.md       # このファイル
+arcana/                # ギルド拠点
+├── quests/            # クエスト掲示板 — クエストの管理
+├── chronicles/        # 年代記 — クエストの詳細記録（ログ）
+├── grimoire/          # 魔導書 — ナレッジベース（知識・手順）
+└── RULES.md           # ギルドルール（このファイル）
 ```
 
 ## quests（クエスト掲示板）
 
-クエストの進行状況を管理する。
+クエストの進行状況を管理する掲示板。
 
 - ファイル名: `クエスト名.md`
 - ステータス: `受付済み` → `進行中` → `完了` / `保留`
@@ -74,7 +75,7 @@ arcana/
 
 ## chronicles（年代記）
 
-クエストの詳細な作業記録。
+冒険者たちが遂行したクエストの詳細な記録。
 
 - ファイル名: `YYYY-MM-DD_クエスト名.md`
 - 内容: 依頼内容、編成、作業経緯、成果
@@ -94,9 +95,9 @@ arcana/
 EOF
 
 echo ""
-echo "=== Arcana 書庫の初期化が完了しました ==="
+echo "=== 冒険者ギルド「Arcana」の設立が完了しました ==="
 echo ""
-echo "作成されたディレクトリ:"
+echo "ギルド拠点:"
 echo "  arcana/quests/      — クエスト掲示板（クエスト管理）"
 echo "  arcana/chronicles/  — 年代記（クエストの記録）"
 echo "  arcana/grimoire/    — 魔導書（ナレッジベース）"

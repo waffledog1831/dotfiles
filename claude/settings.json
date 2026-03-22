@@ -10,66 +10,24 @@
   },
   "permissions": {
     "allow": [
-      "Edit",
-      "Write",
-      "NotebookEdit",
-      "Read",
-      "Glob",
-      "Grep",
+      "Bash",
       "WebFetch",
-      "WebSearch",
-      "Task",
-      "Bash(git status *)",
-      "Bash(git diff *)",
-      "Bash(git log *)",
-      "Bash(git branch *)",
-      "Bash(git stash *)",
-      "Bash(git fetch *)",
-      "Bash(git checkout *)",
-      "Bash(git add *)",
-      "Bash(git merge *)",
-      "Bash(git rebase *)",
-      "Bash(git cherry-pick *)",
-      "Bash(git tag *)",
-      "Bash(git show *)",
-      "Bash(git rev-parse *)",
-      "Bash(git remote *)",
-      "Bash(git config --get *)",
-      "Bash(ls *)",
-      "Bash(cat *)",
-      "Bash(mkdir *)",
-      "Bash(cp *)",
-      "Bash(mv *)",
-      "Bash(touch *)",
-      "Bash(chmod *)",
-      "Bash(which *)",
-      "Bash(echo *)",
-      "Bash(pwd)",
-      "Bash(wc *)",
-      "Bash(sort *)",
-      "Bash(head *)",
-      "Bash(tail *)",
-      "Bash(date *)",
-      "Bash(env)"
+      "WebSearch"
     ],
     "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
-      "Read(./secrets/**)",
+      "Read(./secrets/**)"
+    ],
+    "ask": [
       "Bash(rm -rf *)",
       "Bash(git push --force *)",
       "Bash(git push * --force *)",
       "Bash(git reset --hard *)",
       "Bash(git clean -f *)"
-    ],
-    "ask": [
-      "Bash(git commit *)",
-      "Bash(git push *)",
-      "Bash(rm *)"
     ]
   },
   "language": "japanese",
   "autoUpdatesChannel": "latest",
-  "showTurnDuration": true,
-  "model": "opus"
+  "showTurnDuration": true
 }

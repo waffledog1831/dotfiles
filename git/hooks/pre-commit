@@ -1,11 +1,8 @@
 #!/bin/bash
 
-MAIN=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
-MAIN=${MAIN:-main}
-
 # main/master への直接コミットを防ぐ（.mainonly が存在する場合は許可）
 CURRENT_BRANCH=$(git symbolic-ref --short HEAD 2>/dev/null)
-if [ "$CURRENT_BRANCH" = "$MAIN" ] || [ "$CURRENT_BRANCH" = "master" ]; then
+if [ "$CURRENT_BRANCH" = "main" ] || [ "$CURRENT_BRANCH" = "master" ]; then
   REPO_ROOT=$(git rev-parse --show-toplevel)
   if [ ! -f "$REPO_ROOT/.mainonly" ]; then
     echo "ERROR: $CURRENT_BRANCH への直接コミットは禁止されています。"

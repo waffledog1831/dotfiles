@@ -31,11 +31,6 @@ mkdir -p "$ARCANA_DIR/chronicles"
 # 魔導書（grimoire）— ナレッジベース
 mkdir -p "$ARCANA_DIR/grimoire"
 
-# .gitkeep で空ディレクトリを保持
-touch "$ARCANA_DIR/quests/.gitkeep"
-touch "$ARCANA_DIR/chronicles/.gitkeep"
-touch "$ARCANA_DIR/grimoire/.gitkeep"
-
 # README
 cat > "$ARCANA_DIR/README.md" << 'EOF'
 # Arcana 書庫

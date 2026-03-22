@@ -4,3 +4,9 @@
 [core]
 	autocrlf = false
 	excludesfile = ~/.gitignore_global
+[pull]
+	rebase = false
+[push]
+	default = current
+[init]
+	defaultBranch = main

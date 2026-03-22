@@ -1,5 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "respectGitignore": true,
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "attribution": {
+    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
+    "pr": "Generated with Claude Code"
+  },
   "permissions": {
     "allow": [
       "Edit",
@@ -44,11 +52,6 @@
       "Bash(date *)",
       "Bash(env)"
     ],
-    "ask": [
-      "Bash(git commit *)",
-      "Bash(git push *)",
-      "Bash(rm *)"
-    ],
     "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
@@ -58,17 +61,15 @@
       "Bash(git push * --force *)",
       "Bash(git reset --hard *)",
       "Bash(git clean -f *)"
+    ],
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(rm *)"
     ]
   },
   "language": "japanese",
   "autoUpdatesChannel": "latest",
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
-  "respectGitignore": true,
   "showTurnDuration": true,
-  "attribution": {
-    "commit": "Co-Authored-By: Claude <noreply@anthropic.com>",
-    "pr": "Generated with Claude Code"
-  }
+  "model": "opus"
 }

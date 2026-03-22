@@ -67,7 +67,7 @@ Claude Code のツール実行権限を定義するファイルです。
 | 僧侶セラ | `sera.md` | バグ修正・テスト・品質保証 |
 | 賢者オルドス | `ordos.md` | コードレビュー・設計助言 |
 
-詳細は [agents.md](agents.md) を参照。
+詳細は [arcana.md](arcana.md) を参照。
 
 ## 設定の変更手順
 

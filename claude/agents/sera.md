@@ -45,6 +45,7 @@ memory: project
 ## Arcana への記録
 
 バグの原因パターンやテスト戦略の知見は `arcana/grimoire/` に記録して、同じ傷が繰り返されないよう守りを固める。
+ルールは `arcana/RULES.md` を参照。
 
 ## 行動指針
 

@@ -39,6 +39,7 @@ memory: project
 ## Arcana への記録
 
 偵察で得た重要な知見（構造の特徴、隠れた依存関係など）は `arcana/grimoire/` に記録を残す。
+ルールは `arcana/RULES.md` を参照。
 
 ## 行動指針
 

@@ -10,13 +10,14 @@ dotfiles/
 │   ├── CLAUDE.md        # Claude Code のカスタム指示
 │   ├── settings.json    # Claude Code の権限・設定
 │   ├── skills/          # Claude Code のカスタムスキル
-│   └── agents/          # Claude Code のカスタムエージェント
+│   └── agents/          # 冒険者ギルド「Arcana」エージェント
 ├── git/
 │   └── .gitconfig       # Git のユーザー設定
 ├── wezterm/
 │   └── .wezterm.lua     # WezTerm の設定（PowerShell 7 / C:\project）
 ├── docs/                # ドキュメント
 ├── install.sh           # セットアップスクリプト
+├── arcana-init.sh       # Arcana 書庫の初期化スクリプト
 └── .gitignore
 ```
 
@@ -35,4 +36,5 @@ bash install.sh
 - [セットアップガイド](docs/setup/setup.md) — 前提条件・インストール手順・注意点
 - [Claude Code 運用ガイド](docs/claude/claude.md) — 設定ファイルの役割と運用方法
 - [カスタムスキル一覧](docs/claude/skills.md) — 利用可能なスキルとその使い方
+- [冒険者ギルド「Arcana」](docs/claude/agents.md) — エージェント一覧と書庫の使い方
 - [プロジェクトダッシュボード](docs/dashboard/dashboard.md) — プロジェクトの状態管理

@@ -24,6 +24,7 @@ echo "=== 冒険者ギルド「Arcana」を設立します ==="
 mkdir -p "$ARCANA_DIR/quests"
 mkdir -p "$ARCANA_DIR/chronicles"
 mkdir -p "$ARCANA_DIR/grimoire"
+mkdir -p "$ARCANA_DIR/tavern"
 
 # ギルドルール
 cat > "$ARCANA_DIR/RULES.md" << 'EOF'
@@ -39,6 +40,7 @@ arcana/                # ギルド拠点
 ├── quests/            # クエスト掲示板 — クエストの管理
 ├── chronicles/        # 年代記 — クエストの詳細記録（ログ）
 ├── grimoire/          # 魔導書 — ナレッジベース（知識・手順）
+├── tavern/            # 酒場 — 冒険者の作業レポート・調査報告
 └── RULES.md           # ギルドルール（このファイル）
 ```
 
@@ -87,6 +89,13 @@ arcana/                # ギルド拠点
 - ファイル名: `テーマ.md`（日付なし、継続更新）
 - 内容: 技術的な知見、手順書、設定メモなど
 
+## tavern（酒場）
+
+冒険者たちの作業レポート・調査報告の置き場。
+
+- ファイル名: `{冒険者名}-report-{クエスト名}.md`
+- 内容: 各冒険者が作業中・作業後に出力する詳細な作業報告
+
 ## 記録のタイミング
 
 - 作業がひと段落ついたタイミングで、記録を提案する
@@ -101,5 +110,6 @@ echo "ギルド拠点:"
 echo "  arcana/quests/      — クエスト掲示板（クエスト管理）"
 echo "  arcana/chronicles/  — 年代記（クエストの記録）"
 echo "  arcana/grimoire/    — 魔導書（ナレッジベース）"
+echo "  arcana/tavern/      — 酒場（冒険者の作業レポート・調査報告）"
 echo ""
 echo "ギルドルール: arcana/RULES.md"

@@ -44,6 +44,7 @@ memory: project
 
 ## Arcana への記録
 
+レビューレポートは `arcana/tavern/` に `{儂の名前}-report-{クエスト名}.md` で出力する。
 設計判断の理由やアーキテクチャの教訓は `arcana/grimoire/` に賢者の書として残す。
 「後の世代が同じ過ちを繰り返さぬよう、書に記しておこう」
 ルールは `arcana/RULES.md` を参照。

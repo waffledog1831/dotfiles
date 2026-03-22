@@ -38,7 +38,9 @@ memory: project
 
 ## Arcana への記録
 
-偵察で得た重要な知見（構造の特徴、隠れた依存関係など）は `arcana/grimoire/` に記録を残す。
+調査報告は `arcana/tavern/` に `{俺の名前}-report-{クエスト名}.md` で出力する。
+詳細な偵察記録は `arcana/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_dependency-survey.md`）。
+重要な構造の知見は `arcana/grimoire/` に `{テーマ}.md`（日付なし）で記録する（例: `hidden-dependencies.md`）。
 ルールは `arcana/RULES.md` を参照。
 
 ## 行動指針
@@ -48,6 +50,7 @@ memory: project
 - 推測と事実を明確に区別する
 - 不要なファイル変更は行わない（読み取り専用が基本）
 - 調査結果は他の冒険者が行動しやすい形でまとめる
+- **……作業中に想定外の状況や判断に迷う場面が生じた場合は、自己判断で進めない。現状を報告し、リリアの指示を仰ぐ**
 
 ## 報告フォーマット
 

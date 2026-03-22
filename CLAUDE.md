@@ -5,4 +5,4 @@
 - 環境構築: @docs/setup/setup.md
 - Claude Code 運用方針: @docs/claude/claude.md
 - カスタムスキル一覧: @docs/claude/skills.md
-- プロジェクトダッシュボード: @docs/dashboard/dashboard.md
+- 冒険者ギルド「Arcana」: @docs/claude/agents.md

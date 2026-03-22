@@ -12,23 +12,42 @@ $ARGUMENTS
 
 ## 手順
 
-### 1. PR情報の取得
+### 1. リポジトリ情報の取得
 
-`gh` CLIを使って以下の情報を取得する:
+まず以下でリポジトリの owner/repo を動的に取得する:
 
-- `gh pr view <PR> --json title,body,baseRefName,headRefName,commits,files,additions,deletions`
-- `gh pr diff <PR>`
-- `gh pr view <PR> --json comments,reviews`（既存レビューがあれば把握する）
+```bash
+gh repo view --json owner,name --jq '"\\(.owner.login)/\\(.name)"'
+```
 
-### 2. 全体像の把握
+次に PR 情報を取得する（PR番号が URL の場合は番号部分を抽出して使用）:
+
+- `gh pr view <PR> --json title,body,baseRefName,headRefName,additions,deletions,changedFiles,commits`
+- `gh pr view <PR> --json files --jq '.files[].path'` — 変更ファイル一覧
+- `gh pr diff <PR>` — 差分の取得
+- `gh pr view <PR> --json comments,reviews` — 既存レビューの確認（重複コメント防止）
+
+### 2. 大規模PR の判断
+
+変更ファイルが **10件超** または diff が **500行超** の場合は「大規模PR」とみなし、以下の優先度で確認する:
+
+1. セキュリティに関わるファイル（認証、暗号化、権限チェックなど）
+2. コアビジネスロジック（ドメイン層、サービス層など）
+3. データベーススキーマ・マイグレーション
+4. API インターフェース（公開エンドポイント）
+5. その他（テスト、設定、ドキュメントなど）
+
+大規模PRの場合はレビュー冒頭に「大規模PRのため、優先度の高いファイルに絞ってレビューしています」と明記する。
+
+### 3. 全体像の把握
 
 - PRのタイトル・説明から**意図と目的**を理解する
 - コミット履歴から**変更の流れ**を把握する
 - 変更ファイル一覧から**影響範囲**を確認する
 
-### 3. 差分の詳細レビュー
+### 4. 差分の詳細レビュー
 
-変更されたファイルを1つずつ読み、以下の観点でチェックする:
+変更されたファイルを確認し、以下の観点でチェックする:
 
 #### バグ・ロジックエラー
 - off-by-oneエラー、nullチェック漏れ、境界値の考慮
@@ -57,29 +76,58 @@ $ARGUMENTS
 - エッジケースのカバレッジ
 - テストの可読性と保守性
 
-### 4. PRにインラインコメントを投稿
+### 5. 総合判定の決定
 
-指摘事項は**PRの差分上にインラインコメント**として投稿する。長文の一括コメントではなく、該当ファイル・行に直接コメントを付ける。
+レビューコメントを投稿する前に、以下の基準で `event` を決定する:
+
+| event | 基準 |
+|-------|------|
+| `APPROVE` | 🔴 Must Fix がゼロ。マージしても問題ない |
+| `REQUEST_CHANGES` | 🔴 Must Fix が1件以上ある。マージ前に修正が必要 |
+| `COMMENT` | 承認も却下もしない。情報提供・質問のみ。WIPのPRや他者のPRに意見する場合など |
+
+### 6. PRにインラインコメントを投稿
+
+指摘事項は**PRの差分上にインラインコメント**として投稿する。
+
+#### position の算出方法
+
+`gh pr diff <PR>` の出力を使い、**diff 全体を1行目から数えた行番号**が `position` になる。
+
+```
+@@ -10,6 +10,7 @@   ← この行が position 1
+ context line        ← position 2
+ context line        ← position 3
+-removed line        ← position 4
++added line          ← position 5
+ context line        ← position 6
+```
+
+ルール:
+- `@@` ヘッダー行も1としてカウントする
+- diff に複数のファイルが含まれる場合、各ファイルの `diff --git a/...` 行から数え直す（ファイルごとにリセット）
+- コメントしたい行の位置を正確に数えて `position` に設定する
+- 位置が不確かな場合は、インラインコメントではなく `body`（レビュー全体コメント）に記載する
 
 #### 手順
 
 1. `gh api repos/{owner}/{repo}/pulls/{number} --jq '.head.sha'` で最新コミット SHA を取得
-2. レビューペイロード（JSON）を一時ファイルに書き出す
+2. レビューペイロード（JSON）を一時ファイルに書き出す（`/tmp/review_payload.json` 等）
 3. `gh api repos/{owner}/{repo}/pulls/{number}/reviews --method POST --input <file>` で投稿
-4. 一時ファイルを削除
+4. 一時ファイルを削除する
 
 #### ペイロードの形式
 
 ```json
 {
   "commit_id": "<最新コミットSHA>",
-  "event": "COMMENT",
-  "body": "レビュー全体のサマリー（1〜2行）",
+  "event": "APPROVE | REQUEST_CHANGES | COMMENT",
+  "body": "レビュー全体のサマリー（2〜3行）。Must Fix の件数があれば記載。",
   "comments": [
     {
       "path": "ファイルパス",
-      "position": <diff内の行位置>,
-      "body": "🟡 **Should Fix**: 指摘内容"
+      "position": <diff内の行位置（整数）>,
+      "body": "🔴 **Must Fix**: 指摘内容"
     }
   ]
 }
@@ -91,25 +139,31 @@ $ARGUMENTS
 |---------------|------|
 | 🔴 **Must Fix** | 修正必須（バグ、セキュリティ問題） |
 | 🟡 **Should Fix** | 修正推奨（設計改善、潜在的リスク） |
-| 💭 **Nit** | 些細な改善提案 |
+| 💭 **Nit** | 些細な改善提案（なくてもマージ可） |
 | 👍 **Good** | 良い点（積極的に付ける） |
+| ❓ **Question** | 意図の確認・質問（修正要求ではない） |
 
 #### 注意事項
 
-- `position` は diff の行番号（ファイルの行番号ではない）。`gh pr diff` の出力から数える
+- `position` の算出に自信がない場合は `body` にまとめて記載する（誤った行番号は投稿エラーになる）
 - 指摘がない場合は無理にコメントを作らない
 - 良い点も積極的にインラインで褒める
 - レビュー本文（`body`）にはサマリーだけ書き、詳細は全てインラインコメントに入れる
 
-### 5. ターミナルへの結果報告
+### 7. ターミナルへの結果報告
 
 PR投稿後、ユーザーにも以下のフォーマットで要約を報告する:
 
 | ファイル | 種別 | 内容 |
 |---------|------|------|
-| `ファイル名` | 🟡/💭/👍 | 指摘の要約 |
+| `ファイル名` | 🔴/🟡/💭/👍 | 指摘の要約 |
 
-最後に総合判定（Approve / Request Changes / Comment）と理由を添える。
+最後に総合判定と理由を添える:
+
+```
+総合判定: Approve / Request Changes / Comment
+理由: （1〜2行で理由を記載）
+```
 
 ## 引数の例
 

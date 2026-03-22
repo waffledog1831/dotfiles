@@ -26,33 +26,78 @@ $ARGUMENTS
 - 未ステージの変更がある場合、変更内容を確認して関連ファイルをステージする
 - `.env`, `credentials`, `secrets/` など機密ファイルは除外する
 - 関連性のない変更が混在している場合は、ユーザーに分割するか確認する
+- ステージするファイルがない場合は、その旨を報告して終了する
 
 ### 3. コミットメッセージの作成
 
 変更内容を分析し、以下のルールでコミットメッセージを作成する:
 
-#### ルール
+#### 言語
 
-- **英語**で書く
-- **1行目**: 変更の要約（50文字以内を目安、命令形）
-- **本文**（必要な場合のみ）: 変更の理由や背景を簡潔に
-- 末尾に `Co-Authored-By: Claude <noreply@anthropic.com>` を付与
-- 「何をしたか」ではなく「なぜしたか」にフォーカス
-- add = 新規追加, update = 既存改善, fix = バグ修正, remove = 削除, refactor = リファクタ
+**日本語**でコミットメッセージを書く。
+
+#### フォーマット
+
+```
+<prefix>: <件名>
+
+<本文（任意）>
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+
+#### prefix 一覧
+
+| prefix | 用途 |
+|--------|------|
+| `feat` | 新機能の追加 |
+| `fix` | バグ修正 |
+| `docs` | ドキュメントのみの変更 |
+| `style` | コードの動作に影響しない変更（フォーマット、空白など） |
+| `refactor` | バグ修正・機能追加を伴わないコードの整理 |
+| `perf` | パフォーマンス改善 |
+| `test` | テストの追加・修正 |
+| `chore` | ビルドプロセス・補助ツール・ライブラリの更新など |
+| `ci` | CI/CD 設定の変更 |
+| `revert` | 以前のコミットの取り消し |
+
+#### 件名のルール
+
+- **50文字以内**を目安
+- 末尾に句点（。）をつけない
+- 「何をしたか」よりも**「なぜしたか」「何が変わったか」**にフォーカス
+- 動詞から始める（「追加」「修正」「削除」「改善」など）
+
+#### 本文を書くべきケース
+
+以下に該当する場合は本文に追記する（それ以外は件名だけでOK）:
+
+- 変更理由がコードを見ただけでは分からない
+- 複数の変更をまとめてコミットしている
+- 将来の自分や他のメンバーへの注意事項がある
+- リバートやホットフィックスなど経緯の説明が必要
 
 #### メッセージ例
 
 ```
-Add user authentication with JWT tokens
+feat: JWT認証機能を追加
 
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
 
 ```
-Fix off-by-one error in pagination logic
+fix: ページネーションの最終ページに余分なアイテムが含まれる問題を修正
 
-The last page was returning one extra item due to
-inclusive boundary check.
+inclusive な境界チェックになっていたため、最終ページで1件余分に
+返されていた。exclusive に変更して対応。
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+```
+
+```
+chore: 依存パッケージをアップデート
+
+セキュリティ修正を含むマイナーアップデート。破壊的変更なし。
 
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
@@ -61,7 +106,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 - HEREDOC 形式でコミットメッセージを渡す
 - コミット後に `git status` で成功を確認する
-- 結果をユーザーに報告する
+- フックで失敗した場合はエラー内容を確認し、問題を修正してから再度コミットする
 
 ### 5. 結果報告
 

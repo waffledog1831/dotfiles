@@ -1,2 +1,5 @@
 # Arcana
 arcana/
+
+# Claude Code
+.claude/agent-memory/

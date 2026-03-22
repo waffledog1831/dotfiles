@@ -1,5 +1,2 @@
-# Arcana 書庫（各リポジトリ内の arcana/ を git 管理対象外にする）
+# Arcana
 arcana/
-
-# レガシー：旧ノート管理（移行済み）
-notes/

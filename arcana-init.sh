@@ -9,8 +9,6 @@ set -euo pipefail
 #
 # Usage:
 #   bash /path/to/dotfiles/arcana-init.sh
-#   または dotfiles の install.sh で PATH に追加済みなら:
-#   arcana-init.sh
 # ============================================================
 
 ARCANA_DIR="./arcana"
@@ -22,54 +20,77 @@ fi
 
 echo "=== Arcana 書庫を初期化します ==="
 
-# クエスト掲示板（quests）— クエストの管理
+# ディレクトリ作成
 mkdir -p "$ARCANA_DIR/quests"
-
-# 年代記（chronicles）— クエストの記録
 mkdir -p "$ARCANA_DIR/chronicles"
-
-# 魔導書（grimoire）— ナレッジベース
 mkdir -p "$ARCANA_DIR/grimoire"
 
-# README
-cat > "$ARCANA_DIR/README.md" << 'EOF'
-# Arcana 書庫
+# ギルドルール
+cat > "$ARCANA_DIR/RULES.md" << 'EOF'
+# Arcana 書庫 — ギルドルール
 
-冒険者ギルド「Arcana」の書庫です。このプロジェクトで行われたクエスト（作業）の管理・記録と、得られた知識を保管します。
+冒険者ギルド「Arcana」の書庫運用ルールです。
 
 ## 構成
 
 ```
 arcana/
-├── quests/        # クエスト掲示板 — 進行中・完了済みクエストの管理
-│   └── クエスト名.md
-├── chronicles/    # 年代記 — クエストの詳細な記録（ログ）
-│   └── YYYY-MM-DD_クエスト名.md
+├── quests/        # クエスト掲示板 — クエストの管理
+├── chronicles/    # 年代記 — クエストの詳細記録（ログ）
 ├── grimoire/      # 魔導書 — ナレッジベース（知識・手順）
-│   └── テーマ.md
-└── README.md
+└── RULES.md       # このファイル
 ```
 
-### quests（クエスト掲示板）
+## quests（クエスト掲示板）
 
-現在のクエスト状況を管理する掲示板です。
+クエストの進行状況を管理する。
 
 - ファイル名: `クエスト名.md`
-- 内容: 依頼内容、ステータス、担当冒険者、進捗
+- ステータス: `受付済み` → `進行中` → `完了` / `保留`
 
-### chronicles（年代記）
+### テンプレート
 
-冒険者たちが遂行したクエストの詳細な記録です。
+```markdown
+# クエスト名
+
+- **ステータス**: 受付済み / 進行中 / 完了 / 保留
+- **難易度**: S / A / B / C / D
+- **受付日**: YYYY-MM-DD
+- **編成**: （担当冒険者）
+
+## 依頼内容
+
+（何をするか）
+
+## 進捗
+
+- [ ] タスク1
+- [ ] タスク2
+
+## 成果
+
+（完了時に記入）
+```
+
+## chronicles（年代記）
+
+クエストの詳細な作業記録。
 
 - ファイル名: `YYYY-MM-DD_クエスト名.md`
-- 内容: クエストの依頼内容、編成、作業経緯、成果
+- 内容: 依頼内容、編成、作業経緯、成果
 
-### grimoire（魔導書）
+## grimoire（魔導書）
 
-クエストを通じて得られた知識やベストプラクティスです。
+クエストを通じて得た知識やベストプラクティス。
 
 - ファイル名: `テーマ.md`（日付なし、継続更新）
 - 内容: 技術的な知見、手順書、設定メモなど
+
+## 記録のタイミング
+
+- 作業がひと段落ついたタイミングで、記録を提案する
+  - 提案例: 「今回の記録、年代記（chronicles）か魔導書（grimoire）にまとめておく？」
+  - ユーザーが承認したら、内容を整理して該当フォルダに作成する
 EOF
 
 echo ""
@@ -80,4 +101,4 @@ echo "  arcana/quests/      — クエスト掲示板（クエスト管理）"
 echo "  arcana/chronicles/  — 年代記（クエストの記録）"
 echo "  arcana/grimoire/    — 魔導書（ナレッジベース）"
 echo ""
-echo "※ arcana/ はグローバル .gitignore で除外済みです。"
+echo "ギルドルール: arcana/RULES.md"

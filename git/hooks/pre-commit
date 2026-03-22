@@ -1,0 +1,16 @@
+#!/bin/bash
+# main/master の最新が取り込まれているか確認する
+
+MAIN=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+MAIN=${MAIN:-main}
+
+# リモートの最新を取得（失敗しても続行）
+git fetch origin "$MAIN" --quiet 2>/dev/null
+
+BEHIND=$(git rev-list HEAD..origin/"$MAIN" --count 2>/dev/null)
+
+if [ "${BEHIND:-0}" -gt 0 ]; then
+  echo "ERROR: origin/$MAIN が $BEHIND コミット先行しています。"
+  echo "       git pull してから作業してください。"
+  exit 1
+fi

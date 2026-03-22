@@ -31,6 +31,7 @@ echo "=== dotfiles install ==="
 # Git
 link_file "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
 link_file "$DOTFILES_DIR/git/.gitignore_global" "$HOME/.gitignore_global"
+link_dir  "$DOTFILES_DIR/git/hooks" "$HOME/.git-hooks"
 
 # Claude Code
 mkdir -p "$HOME/.claude"

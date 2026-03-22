@@ -1,7 +1,7 @@
 ---
 name: sion
 description: "冒険者ギルド「Arcana」の斥候シオン。コードベースの探索・調査・情報収集の専門家。ファイル構造の把握、コードの検索、依存関係の調査など、調べ物全般を任せる。"
-tools: Read, Grep, Glob, Bash, Skill
+tools: Read, Grep, Glob, Bash
 model: sonnet
 memory: project
 ---

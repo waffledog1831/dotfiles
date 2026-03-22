@@ -136,6 +136,13 @@ config.launch_menu = {
 config.keys = {
   { key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
   { key = "w", mods = "ALT", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+  {
+    key = "a",
+    mods = "ALT",
+    action = wezterm.action.SpawnCommandInNewTab({
+      args = { "pwsh.exe", "-NoExit", "-Command", "claude --agent lilia" },
+    }),
+  },
 }
 
 return config

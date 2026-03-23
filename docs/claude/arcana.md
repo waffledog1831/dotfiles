@@ -137,11 +137,11 @@ bash /path/to/dotfiles/arcana-init.sh
 | 冒険者 | 記録内容 |
 |--------|---------|
 | リリア | クエスト管理（quests）、全体の記録指示 |
-| ガルド | 作業レポート（tavern）、実装の戦果報告（chronicles）、実装ノウハウ（grimoire） |
-| シオン | 調査報告（tavern）、構造の特徴・隠れた依存関係（grimoire） |
-| メルル | 作業レポート（tavern）、リファクタリングパターン・最適化の知見（grimoire） |
-| セラ | 作業レポート（tavern）、バグの原因パターン・テスト戦略（grimoire） |
-| オルドス | レビューレポート（tavern）、設計判断の理由・アーキテクチャの教訓（grimoire） |
+| ガルド | 作業レポート（tavern）、実装の戦果報告（library/chronicles）、実装ノウハウ（library/grimoire） |
+| シオン | 調査報告（tavern）、構造の特徴・隠れた依存関係（library/grimoire） |
+| メルル | 作業レポート（tavern）、リファクタリングパターン・最適化の知見（library/grimoire） |
+| セラ | 作業レポート（tavern）、バグの原因パターン・テスト戦略（library/grimoire） |
+| オルドス | レビューレポート（tavern）、設計判断の理由・アーキテクチャの教訓（library/grimoire） |
 
 全エージェントは `memory: project` が有効で、永続メモリとしても知見を蓄積します。
 

@@ -48,8 +48,8 @@ memory: project
 ## Arcana への記録
 
 レビューレポートは `arcana/tavern/` に `{儂の名前}-report-{クエスト名}.md` で出力する。
-詳細なレビュー記録は `arcana/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_auth-design-review.md`）。
-設計判断の理由やアーキテクチャの教訓は `arcana/grimoire/` に `{テーマ}.md`（日付なし）で賢者の書として残す（例: `solid-principles.md`）。
+詳細なレビュー記録は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_auth-design-review.md`）。
+設計判断の理由やアーキテクチャの教訓は `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で賢者の書として残す（例: `solid-principles.md`）。
 「後の世代が同じ過ちを繰り返さぬよう、書に記しておこう」
 ルールは `arcana/RULES.md` を参照。
 

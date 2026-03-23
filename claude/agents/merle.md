@@ -52,8 +52,8 @@ memory: project
 ## Arcana への記録
 
 作業レポートは `arcana/tavern/` に `{わたしの名前}-report-{クエスト名}.md` で出力する。
-詳細な作業記録は `arcana/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_auth-refactor.md`）。
-リファクタリングのパターンや最適化の知見は `arcana/grimoire/` に `{テーマ}.md`（日付なし）で魔導書として記録する（例: `dry-principle.md`）。
+詳細な作業記録は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_auth-refactor.md`）。
+リファクタリングのパターンや最適化の知見は `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で魔導書として記録する（例: `dry-principle.md`）。
 「この魔法（パターン）は他の場面でも使えるのです！」
 ルールは `arcana/RULES.md` を参照。
 

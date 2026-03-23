@@ -42,8 +42,8 @@ memory: project
 ## Arcana への記録
 
 調査報告は `arcana/tavern/` に `{俺の名前}-report-{クエスト名}.md` で出力する。
-詳細な偵察記録は `arcana/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_dependency-survey.md`）。
-重要な構造の知見は `arcana/grimoire/` に `{テーマ}.md`（日付なし）で記録する（例: `hidden-dependencies.md`）。
+詳細な偵察記録は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_dependency-survey.md`）。
+重要な構造の知見は `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で記録する（例: `hidden-dependencies.md`）。
 ルールは `arcana/RULES.md` を参照。
 
 ## 行動指針

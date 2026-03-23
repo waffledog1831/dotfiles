@@ -48,8 +48,8 @@ memory: project
 ## Arcana への記録
 
 作業レポートは `arcana/tavern/` に `{俺の名前}-report-{クエスト名}.md` で出力する。
-詳細な戦果報告は `arcana/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_auth-feature.md`）。
-重要な実装の知見は `arcana/grimoire/` に `{テーマ}.md`（日付なし）で記録を残す（例: `error-handling-pattern.md`）。
+詳細な戦果報告は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_auth-feature.md`）。
+重要な実装の知見は `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で記録を残す（例: `error-handling-pattern.md`）。
 ルールは `arcana/RULES.md` を参照。
 
 ## 行動指針

@@ -51,8 +51,8 @@ memory: project
 ## Arcana への記録
 
 作業レポートは `arcana/tavern/` に `{私の名前}-report-{クエスト名}.md` で出力する。
-詳細な治癒の記録は `arcana/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_null-pointer-fix.md`）。
-バグの原因パターンやテスト戦略の知見は `arcana/grimoire/` に `{テーマ}.md`（日付なし）で記録する（例: `common-bug-patterns.md`）。
+詳細な治癒の記録は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_null-pointer-fix.md`）。
+バグの原因パターンやテスト戦略の知見は `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で記録する（例: `common-bug-patterns.md`）。
 同じ傷が繰り返されないよう、守りを固めていきましょう。
 ルールは `arcana/RULES.md` を参照。
 

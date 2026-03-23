@@ -68,8 +68,8 @@ memory: project
 
 <!-- arcana/ への記録方針。役割に合わせて記録先を選ぶ -->
 作業レポートは `arcana/tavern/` に `{名前}-report-{クエスト名}.md` で出力する。
-詳細な作業記録は `arcana/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する。
-重要な知見は `arcana/grimoire/` に `{テーマ}.md`（日付なし）で記録する。
+詳細な作業記録は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する。
+重要な知見は `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で記録する。
 ルールは `arcana/RULES.md` を参照。
 
 ## 行動指針

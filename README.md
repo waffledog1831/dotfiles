@@ -6,30 +6,37 @@
 
 ```
 dotfiles/
-├── claude/
-│   ├── CLAUDE.md        # Claude Code のカスタム指示
-│   ├── settings.json    # Claude Code の権限・設定
-│   ├── skills/          # Claude Code のカスタムスキル
-│   └── agents/          # 冒険者ギルド「Arcana」エージェント
-├── git/
-│   └── .gitconfig       # Git のユーザー設定
-├── wezterm/
-│   └── .wezterm.lua     # WezTerm の設定（PowerShell 7 / C:\project）
+├── common/              # 共通設定（Windows / WSL 両環境）
+│   ├── claude/          # Claude Code（カスタム指示・権限・スキル・エージェント）
+│   ├── git/             # Git 設定
+│   └── install.sh       # 共通セットアップスクリプト
+├── windows/             # Windows 専用設定
+│   ├── wezterm/         # WezTerm（PowerShell 7）
+│   ├── sakura/          # Sakura Editor
+│   └── install.sh       # Windows セットアップスクリプト
+├── wsl/                 # WSL 専用設定
+│   ├── nvim/            # Neovim（LazyVim）
+│   └── install.sh       # WSL セットアップスクリプト
 ├── docs/                # ドキュメント
-├── install.sh           # セットアップスクリプト
 ├── arcana-init.sh       # Arcana 書庫の初期化スクリプト
 └── .gitignore
 ```
 
 ## クイックスタート
 
+**Windows（Git Bash）:**
 ```bash
-bash install.sh
+bash windows/install.sh
 ```
 
-各設定ファイルが `~` 以下にシンボリックリンクで配置される。
+**WSL（Ubuntu）:**
+```bash
+bash wsl/install.sh
+```
 
-> 前提条件やトラブルシューティングは [セットアップガイド](docs/setup/windows-setup.md) を参照。
+各設定ファイルが `~` 以下にシンボリックリンクで配置される。共通設定（Git / Claude Code）は両環境で自動適用される。
+
+> 前提条件やトラブルシューティングは各セットアップガイドを参照。
 
 ## ドキュメント
 

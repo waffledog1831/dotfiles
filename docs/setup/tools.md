@@ -10,6 +10,7 @@
 
 GUIアプリは基本ここ。
 
+- Git for Windows
 - Rancher Desktop
 - WezTerm
 - VS Code

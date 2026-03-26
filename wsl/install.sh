@@ -34,7 +34,6 @@ sudo apt install -y git openssh-client curl wget unzip zip make
 # CLI ユーティリティ
 echo "--- cli utilities ---"
 sudo apt install -y jq tree ripgrep fd-find
-grep -qxF 'alias fd=fdfind' "$HOME/.bashrc" || echo 'alias fd=fdfind' >> "$HOME/.bashrc"
 
 # 開発効率ツール
 echo "--- dev tools ---"
@@ -76,6 +75,11 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 # 共通設定を適用（git / claude）
 bash "$DOTFILES_DIR/common/install.sh"
+
+# bash
+echo "--- bash config ---"
+link_file "$WSL_DIR/bash/.bashrc" "$HOME/.bashrc"
+link_file "$WSL_DIR/bash/.bash_aliases" "$HOME/.bash_aliases"
 
 # Neovim (LazyVim)
 echo "--- nvim config ---"

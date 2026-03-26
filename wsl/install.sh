@@ -41,14 +41,32 @@ sudo apt install -y neovim tmux
 
 # fnm (Node.js)
 echo "--- fnm ---"
-curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/share/fnm" --skip-shell
+if [ ! -f "$HOME/.local/share/fnm/fnm" ]; then
+  curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/share/fnm" --skip-shell
+else
+  echo "fnm already installed, skipping"
+fi
+export PATH="$HOME/.local/share/fnm:$PATH"
+eval "$(fnm env 2>/dev/null)"
+fnm install --lts
+fnm default lts-latest
 
 # pyenv (Python)
 echo "--- pyenv ---"
 sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
   libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev \
   libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-curl https://pyenv.run | bash
+if [ ! -d "$HOME/.pyenv" ]; then
+  curl https://pyenv.run | bash
+else
+  echo "pyenv already installed, skipping"
+fi
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+PYTHON_LTS="$(pyenv install --list | grep -E '^\s+3\.[0-9]+\.[0-9]+$' | tail -1 | tr -d ' ')"
+pyenv install -s "$PYTHON_LTS"
+pyenv global "$PYTHON_LTS"
 
 # gh（GitHub CLI）
 echo "--- gh ---"
@@ -70,13 +88,13 @@ rm -rf /tmp/awscliv2.zip /tmp/aws/
 
 # gcloud
 echo "--- gcloud ---"
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloud.google.gpg
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
 sudo apt update && sudo apt install -y google-cloud-cli
 
 # terraform
 echo "--- terraform ---"
-wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install -y terraform
 
@@ -117,12 +135,4 @@ echo "       gcloud auth login"
 echo ""
 echo "  4. .bashrc の再読み込み"
 echo "       source ~/.bashrc"
-echo ""
-echo "  5. Node.js のインストール（fnm）"
-echo "       fnm install --lts"
-echo "       fnm use lts-latest"
-echo ""
-echo "  6. Python のインストール（pyenv）"
-echo "       pyenv install 3.x.x  # バージョンは pyenv install --list で確認"
-echo "       pyenv global 3.x.x"
 echo ""

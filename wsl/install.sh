@@ -72,7 +72,7 @@ sudo apt update && sudo apt install -y terraform
 
 # Claude Code
 echo "--- claude code ---"
-curl -fsSL https://claude.ai/install.sh | sh
+curl -fsSL https://claude.ai/install.sh | bash
 
 # 共通設定を適用（git / claude）
 bash "$DOTFILES_DIR/common/install.sh"

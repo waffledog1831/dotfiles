@@ -28,7 +28,7 @@ GUIアプリは基本ここ。
 
 - git
 - ssh
-- gh
+- gh（apt 標準外のため別途インストール。手順は [wsl-setup.md](wsl-setup.md) を参照）
 - curl
 - wget
 - unzip
@@ -46,7 +46,7 @@ GUIアプリは基本ここ。
 
 - nvim
 - tmux
-- Claude Code
+- Claude Code（インストール手順は [wsl-setup.md](wsl-setup.md) を参照）
 
 ### クラウド系
 
@@ -119,8 +119,8 @@ GUIアプリは基本ここ。
 
 ## まとめ
 
-**Windows = 操作UI**
-
-**WSL = 開発の母艦CLI環境**
-
-**Dev Container = プロジェクト実行環境**
+| 環境 | 役割 | 代表ツール |
+|------|------|-----------|
+| Windows | 操作UI | WezTerm, VS Code, Rancher Desktop |
+| WSL | 開発の母艦CLI環境 | git, ripgrep, nvim, gcloud |
+| Dev Container | プロジェクト実行環境 | node, python, java, linter |

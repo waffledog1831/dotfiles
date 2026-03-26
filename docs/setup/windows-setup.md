@@ -47,6 +47,8 @@ export MSYS=winsymlinks:nativestrict
 | `git/.gitconfig` | `~/.gitconfig` | Git のユーザー設定 |
 | `wezterm/.wezterm.lua` | `~/.wezterm.lua` | WezTerm の設定 |
 
-## WSL (Ubuntu) の起動
+## WSL (Ubuntu) のセットアップ
 
-WezTerm で `Ctrl+Shift+L` → 「Ubuntu」を選択。
+WezTerm で `Ctrl+Shift+L` → 「Ubuntu」を選択して起動。
+
+WSL 環境でのツールインストールや dotfiles の適用手順は [WSL セットアップガイド](wsl-setup.md) を参照。

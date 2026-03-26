@@ -1,5 +1,11 @@
 # WSL セットアップガイド
 
+> Ubuntu 22.04 LTS 以降を想定。
+
+## WSL の起動
+
+WezTerm で `Ctrl+Shift+L` → 「Ubuntu」を選択。
+
 ## パッケージの更新
 
 ```bash
@@ -16,22 +22,10 @@ sudo apt install -y git openssh-client curl wget unzip zip make
 
 ### CLIユーティリティ
 
-`jq`・`tree` は apt でインストール。`ripgrep`・`fd` は apt の標準リポジトリにないため、別途追加する。
+`jq`・`tree`・`ripgrep` は apt でインストール可能。`fd` はパッケージ名が `fd-find` のため注意。
 
 ```bash
-sudo apt install -y jq tree
-```
-
-**ripgrep**:
-
-```bash
-sudo apt install -y ripgrep
-```
-
-**fd**:
-
-```bash
-sudo apt install -y fd-find
+sudo apt install -y jq tree ripgrep fd-find
 # fd コマンドとして使えるようにエイリアスを設定
 echo 'alias fd=fdfind' >> ~/.bashrc
 source ~/.bashrc
@@ -136,6 +130,8 @@ curl -fsSL https://claude.ai/install.sh | sh
 > Node.js が必要な場合（Dev Container 外でも使いたいとき）は [nodesource](https://github.com/nodesource/distributions) で Node.js をインストールしてから `npm install -g @anthropic-ai/claude-code` でも入れられる。
 
 ## dotfiles の適用
+
+> WSL 環境でのクローン先は `~/dotfiles`（Windows 側の `C:/project/dotfiles` とは別）。
 
 ```bash
 git clone <repository-url> ~/dotfiles

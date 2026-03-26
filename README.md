@@ -29,11 +29,11 @@ bash install.sh
 
 各設定ファイルが `~` 以下にシンボリックリンクで配置される。
 
-> 前提条件やトラブルシューティングは [セットアップガイド](docs/setup/setup.md) を参照。
+> 前提条件やトラブルシューティングは [セットアップガイド](docs/setup/windows-setup.md) を参照。
 
 ## ドキュメント
 
-- [セットアップガイド](docs/setup/setup.md) — 前提条件・インストール手順・注意点
+- [セットアップガイド](docs/setup/windows-setup.md) — 前提条件・インストール手順・注意点
 - [Claude Code 運用ガイド](docs/claude/claude.md) — 設定ファイルの役割と運用方法
 - [カスタムスキル一覧](docs/claude/skills.md) — 利用可能なスキルとその使い方
 - [冒険者ギルド「Arcana」](docs/claude/arcana.md) — エージェント一覧とギルド拠点の使い方

@@ -11,14 +11,14 @@
 GUIアプリは基本ここ。
 
 - Git for Windows
-- Rancher Desktop
+- Claude Code
 - WezTerm
 - VS Code
 - Android Studio
+- Rancher Desktop
 - Bruno
 - DBeaver
 - Sakura Editor
-- Claude Code
 
 ## WSL
 

@@ -118,3 +118,12 @@ fi
 
 # Claude Code
 export PATH="$HOME/.local/bin:$PATH"
+
+# fnm (Node.js)
+export PATH="$HOME/.local/share/fnm:$PATH"
+eval "$(fnm env --use-on-cd 2>/dev/null)"
+
+# pyenv (Python)
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - 2>/dev/null)"

@@ -39,6 +39,17 @@ sudo apt install -y jq tree ripgrep fd-find
 echo "--- dev tools ---"
 sudo apt install -y neovim tmux
 
+# fnm (Node.js)
+echo "--- fnm ---"
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/share/fnm" --skip-shell
+
+# pyenv (Python)
+echo "--- pyenv ---"
+sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+  libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev \
+  libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+curl https://pyenv.run | bash
+
 # gh（GitHub CLI）
 echo "--- gh ---"
 (type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
@@ -104,6 +115,14 @@ echo ""
 echo "  3. gcloud の認証"
 echo "       gcloud auth login"
 echo ""
-echo "  4. .bashrc の再読み込み（fd エイリアスを有効化）"
+echo "  4. .bashrc の再読み込み"
 echo "       source ~/.bashrc"
+echo ""
+echo "  5. Node.js のインストール（fnm）"
+echo "       fnm install --lts"
+echo "       fnm use lts-latest"
+echo ""
+echo "  6. Python のインストール（pyenv）"
+echo "       pyenv install 3.x.x  # バージョンは pyenv install --list で確認"
+echo "       pyenv global 3.x.x"
 echo ""

@@ -1,19 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "respectGitignore": true,
-  "hooks": {
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "powershell.exe -NoProfile -Command \"(New-Object Media.SoundPlayer 'C:\\Windows\\Media\\chimes.wav').PlaySync()\""
-          }
-        ]
-      }
-    ]
-  },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
@@ -38,6 +25,19 @@
       "Bash(git push * --force *)",
       "Bash(git reset --hard *)",
       "Bash(git clean -f *)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe -NoProfile -Command \"(New-Object Media.SoundPlayer 'C:\\Windows\\Media\\chimes.wav').PlaySync()\""
+          }
+        ]
+      }
     ]
   },
   "language": "japanese",

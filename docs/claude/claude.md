@@ -70,6 +70,36 @@ Claude Code のツール実行権限を定義するファイルです。
 
 詳細は [arcana.md](arcana.md) を参照。
 
+## Remote Control（リモート操作）
+
+ローカルの Claude Code セッションを、スマホや claude.ai/code などのブラウザからリモート操作できる機能です。
+
+- **対応バージョン**: v2.1.51 以降
+- **対応プラン**: Pro / Max / Team / Enterprise（API キーでの利用は非対応）
+
+### 常時有効化の方法
+
+`settings.json` には対応するキーがなく、Global config として管理されます。
+
+1. Claude Code 内で `/config` を実行
+2. 「Enable Remote Control for all sessions」を `true` に設定
+3. 設定は `~/.claude.json` に保存される
+
+> `~/.claude.json` にはメールアドレス・UUID・課金情報等が平文で含まれるため、dotfiles でのバージョン管理対象外です。**各マシンで一度ずつ設定が必要**です。
+
+### 起動方法
+
+| 方法 | コマンド | 説明 |
+|------|---------|------|
+| サーバーモード | `claude remote-control` | リモート制御専用サーバーとして起動 |
+| セッション起動時 | `claude --remote-control`（`--rc`） | 起動と同時にリモート制御を有効化 |
+| 既存セッション内 | `/remote-control`（`/rc`） | 起動中のセッションでその場で有効化 |
+
+### 注意点
+
+- Team / Enterprise プランの場合、管理者側での有効化も別途必要
+- `~/.claude.json` は個人情報を含むため絶対に Git 管理しないこと
+
 ## 設定の変更手順
 
 1. このリポジトリの `common/claude/` 配下のファイルを編集

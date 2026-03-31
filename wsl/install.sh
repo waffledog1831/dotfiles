@@ -51,6 +51,10 @@ eval "$(fnm env 2>/dev/null)"
 fnm install --lts
 fnm default lts-latest
 
+# EAS CLI
+echo "--- eas-cli ---"
+npm install -g eas-cli
+
 # pyenv (Python)
 echo "--- pyenv ---"
 sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \

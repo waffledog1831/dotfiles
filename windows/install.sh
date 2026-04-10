@@ -25,4 +25,9 @@ link_file "$WINDOWS_DIR/sakura/sakura.ini" "$SAKURA_DIR/sakura.ini"
 # WezTerm
 link_file "$WINDOWS_DIR/wezterm/.wezterm.lua" "$HOME/.wezterm.lua"
 
+# PowerShell 7 プロファイル（WezTerm OSC 7 CWD通知など）
+PS_PROFILE_DIR="$HOME/Documents/PowerShell"
+mkdir -p "$PS_PROFILE_DIR"
+link_file "$WINDOWS_DIR/powershell/Microsoft.PowerShell_profile.ps1" "$PS_PROFILE_DIR/Microsoft.PowerShell_profile.ps1"
+
 echo "=== windows done ==="

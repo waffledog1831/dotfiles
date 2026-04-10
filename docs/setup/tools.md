@@ -49,6 +49,16 @@ GUIアプリは基本ここ。
 - tmux
 - Claude Code（インストール手順は [wsl-setup.md](wsl-setup.md) を参照）
 
+### 言語ランタイム管理
+
+複数プロジェクトで共通して使う言語は WSL 本体にバージョン管理ツールで入れる。
+
+- **fnm**（Node.js）— `fnm install --lts` / `fnm use <version>`
+- **pyenv**（Python）— `pyenv install <version>` / `pyenv global <version>`
+- EAS CLI（`npm install -g eas-cli`）
+
+> インストール手順の詳細は [wsl-setup.md](wsl-setup.md) を参照。
+
 ### クラウド系
 
 - gcloud
@@ -111,6 +121,8 @@ GUIアプリは基本ここ。
 - バージョン依存がある
 - プロジェクト専用
 - CIと揃えたい
+
+> WSL の fnm/pyenv は「複数プロジェクトで共通利用する土台」。Dev Container は「プロジェクト固有の実行環境」として使い分ける。同じ Node.js / Python でも用途が異なる。
 
 例:
 

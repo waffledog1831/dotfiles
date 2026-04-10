@@ -45,6 +45,85 @@ sudo apt install -y neovim
 sudo apt install -y tmux
 ```
 
+### 言語ランタイム
+
+#### fnm（Node.js）
+
+[fnm](https://github.com/Schniz/fnm) で Node.js のバージョンを管理する。
+
+```bash
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/share/fnm" --skip-shell
+```
+
+インストール後、`.bashrc` に以下を追記して PATH を通す（`wsl/install.sh` 経由の場合は `.bashrc` シンボリックリンクで自動適用される）。
+
+```bash
+export PATH="$HOME/.local/share/fnm:$PATH"
+eval "$(fnm env)"
+```
+
+LTS 版の Node.js をインストールしてデフォルトに設定する。
+
+```bash
+fnm install --lts
+fnm default lts-latest
+```
+
+バージョンを切り替えるときは:
+
+```bash
+fnm install 20        # 特定バージョンをインストール
+fnm use 20            # 現在のシェルで切り替え
+fnm default 20        # デフォルトを変更
+```
+
+#### EAS CLI
+
+[EAS CLI](https://docs.expo.dev/eas/) は Expo Application Services のコマンドラインツール。Node.js インストール後に npm でグローバルインストールする。
+
+```bash
+npm install -g eas-cli
+```
+
+#### pyenv（Python）
+
+[pyenv](https://github.com/pyenv/pyenv) で Python のバージョンを管理する。まず依存パッケージをインストール。
+
+```bash
+sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
+  libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev \
+  libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+```
+
+pyenv 本体のインストール:
+
+```bash
+curl https://pyenv.run | bash
+```
+
+`.bashrc` に以下を追記して PATH を通す（`wsl/install.sh` 経由の場合は自動適用される）。
+
+```bash
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+```
+
+Python のインストールとデフォルト設定:
+
+```bash
+pyenv install 3.12.0   # インストールしたいバージョンを指定
+pyenv global 3.12.0    # グローバルデフォルトに設定
+```
+
+バージョンを切り替えるときは:
+
+```bash
+pyenv install 3.11.9   # 別バージョンをインストール
+pyenv global 3.11.9    # グローバルデフォルトを変更
+pyenv local 3.11.9     # カレントディレクトリのみ切り替え（.python-version に保存）
+```
+
 ### クラウド系
 
 **awscli**:
@@ -121,17 +200,15 @@ ssh -T git@github.com
 
 ## Claude Code のインストール
 
-WSL には Node.js を入れない方針（Node.js は Dev Container に入れる）のため、公式が提供するスタンドアロンインストーラーを使う。
+公式が提供するスタンドアロンインストーラーを使う。
 
 ```bash
-curl -fsSL https://claude.ai/install.sh | sh
+curl -fsSL https://claude.ai/install.sh | bash
 ```
-
-> Node.js が必要な場合（Dev Container 外でも使いたいとき）は [nodesource](https://github.com/nodesource/distributions) で Node.js をインストールしてから `npm install -g @anthropic-ai/claude-code` でも入れられる。
 
 ## dotfiles の適用
 
-> WSL 環境でのクローン先は `~/dotfiles`（Windows 側の `C:/project/dotfiles` とは別）。
+> WSL 環境でのクローン先は `~/dotfiles`（Windows 側の `C:/repos/dotfiles` とは別）。
 
 ```bash
 git clone <repository-url> ~/dotfiles
@@ -140,3 +217,10 @@ bash install.sh
 ```
 
 各設定ファイルが `~` 以下にシンボリックリンクで配置される。
+
+スクリプトが自動で適用するもの:
+
+- bash（`.bashrc` / `.bash_aliases`）
+- Neovim（`~/.config/nvim/`）
+- Git（`.gitconfig` / `.gitignore_global` / `~/.git-hooks/`）
+- Claude Code（`~/.claude/` 以下）

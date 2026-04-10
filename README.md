@@ -15,6 +15,7 @@ dotfiles/
 │   ├── sakura/          # Sakura Editor
 │   └── install.sh       # Windows セットアップスクリプト
 ├── wsl/                 # WSL 専用設定
+│   ├── bash/            # Bash（.bashrc / .bash_aliases）
 │   ├── nvim/            # Neovim（LazyVim）
 │   └── install.sh       # WSL セットアップスクリプト
 ├── docs/                # ドキュメント

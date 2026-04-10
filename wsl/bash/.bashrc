@@ -116,6 +116,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# WezTerm: OSC 7 でCWDを通知（左ステータスバーのディレクトリ表示を更新するため）
+__wezterm_osc7() {
+  printf "\e]7;file://%s%s\e\\" "${HOSTNAME}" "${PWD}"
+}
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }__wezterm_osc7"
+
 # Claude Code
 export PATH="$HOME/.local/bin:$PATH"
 

@@ -172,13 +172,18 @@ apt の標準リポジトリにないため、公式リポジトリを追加し�
 gh auth login
 ```
 
-## Git の初期設定
+## Git ユーザー設定
 
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your@email.com"
-git config --global init.defaultBranch main
+dotfiles の適用後、`~/.gitconfig.local` を作成してユーザー情報を設定します。
+
+```ini
+# ~/.gitconfig.local
+[user]
+    name = your-username
+    email = your@email.com
 ```
+
+> `.gitconfig.local` は Git 管理外のため、マシンごとに作成が必要です。`defaultBranch` 等の共通設定は `~/.gitconfig`（dotfiles 管理）に含まれています。
 
 ## SSH 鍵の生成・GitHub への登録
 

@@ -27,7 +27,20 @@ bash windows/install.sh
 
 各設定ファイルが `~` 以下にシンボリックリンクで配置されます。
 
-### 3. シンボリックリンクの注意点
+### 3. Git ユーザー設定
+
+`~/.gitconfig.local` を作成し、Git のユーザー情報を設定します。
+
+```ini
+# ~/.gitconfig.local
+[user]
+    name = your-username
+    email = your@email.com
+```
+
+> `.gitconfig.local` は Git 管理外のため、マシンごとに作成が必要です。
+
+### 4. シンボリックリンクの注意点
 
 Git Bash 上で `ln -s` を使う場合、デフォルトではファイルコピーになります。
 ネイティブなシンボリックリンクを作成するには、以下の環境変数が必要です。
@@ -46,7 +59,7 @@ export MSYS=winsymlinks:nativestrict
 | `common/claude/settings.json` | `~/.claude/settings.json` | Claude Code の権限・設定 |
 | `common/claude/skills/` | `~/.claude/skills/` | Claude Code カスタムスキル |
 | `common/claude/agents/` | `~/.claude/agents/` | Claude Code エージェント定義 |
-| `common/git/.gitconfig` | `~/.gitconfig` | Git のユーザー設定 |
+| `common/git/.gitconfig` | `~/.gitconfig` | Git の共通設定（ユーザー情報は別途 `~/.gitconfig.local` に設定） |
 | `common/git/.gitignore_global` | `~/.gitignore_global` | Git のグローバル除外設定 |
 | `common/git/hooks/` | `~/.git-hooks/` | Git のグローバルフック |
 | `windows/wezterm/.wezterm.lua` | `~/.wezterm.lua` | WezTerm の設定 |

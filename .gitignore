@@ -2,3 +2,6 @@
 .env
 .env.*
 secrets/
+
+# Claude エージェントの永続メモリ（個人情報が含まれる可能性あり）
+.claude/agent-memory/

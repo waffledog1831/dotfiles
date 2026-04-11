@@ -1,6 +1,6 @@
 [user]
 	name = waffledog1831
-	email = waffledog1831@gmail.com
+	# email は各マシンで設定: git config --global user.email "your@email.com"
 [core]
 	autocrlf = false
 	excludesfile = ~/.gitignore_global

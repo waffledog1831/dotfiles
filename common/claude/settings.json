@@ -27,6 +27,7 @@
       "Bash(git clean -f *)"
     ]
   },
+  "model": "sonnet",
   "hooks": {
     "Stop": [
       {
@@ -42,5 +43,6 @@
   },
   "language": "japanese",
   "autoUpdatesChannel": "latest",
-  "showTurnDuration": true
+  "showTurnDuration": true,
+  "tui": "fullscreen"
 }

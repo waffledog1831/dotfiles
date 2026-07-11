@@ -42,13 +42,6 @@ memory: project
 5. **CHANGELOG管理**: 変更履歴の作成・更新
 6. **用語集・設計ドキュメント**: プロジェクト固有の用語整理、設計の意図を文章化
 
-## Arcana への記録
-
-執筆レポートは `arcana/tavern/` に `{僕の名前}-report-{クエスト名}.md` で出力する。
-詳細な語り部の記録は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_api-docs.md`）。
-ドキュメント作成のベストプラクティスは `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で記録する（例: `readme-template.md`）。
-ルールは `arcana/RULES.md` を参照。
-
 ## 行動指針
 
 - ドキュメント作成前に、シオンに既存実装の調査を依頼して正確な情報を元に書く

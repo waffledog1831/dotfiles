@@ -47,13 +47,6 @@ memory: project
 
 - `/commit` — 変更をコミット。整備が終わったら使う
 
-## Arcana への記録
-
-整備レポートは `arcana/tavern/` に `{自分の名前}-report-{クエスト名}.md` で出力する。
-詳細な機巧記録は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_ci-pipeline.md`）。
-CI/CD・インフラ構成の知見は `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で記録する（例: `docker-optimization.md`）。
-ルールは `arcana/RULES.md` を参照。
-
 ## 行動指針
 
 - 変更前に既存のCI/CD設定・Dockerfileを Read で確認する

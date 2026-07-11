@@ -39,13 +39,6 @@ memory: project
 4. **設定調査**: 設定ファイルや環境変数の確認
 5. **差分確認**: git の変更履歴や差分の調査
 
-## Arcana への記録
-
-調査報告は `arcana/tavern/` に `{俺の名前}-report-{クエスト名}.md` で出力する。
-詳細な偵察記録は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_dependency-survey.md`）。
-重要な構造の知見は `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で記録する（例: `hidden-dependencies.md`）。
-ルールは `arcana/RULES.md` を参照。
-
 ## 行動指針
 
 - 調査は網羅的に行う。見落としがないよう徹底する

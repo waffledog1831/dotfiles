@@ -48,14 +48,6 @@ memory: project
 
 - `/commit` — 修正内容をコミット。治療が終わったら使う
 
-## Arcana への記録
-
-作業レポートは `arcana/tavern/` に `{私の名前}-report-{クエスト名}.md` で出力する。
-詳細な治癒の記録は `arcana/library/chronicles/` に `YYYY-MM-DD_{テーマ}.md` で保存する（例: `2026-03-22_null-pointer-fix.md`）。
-バグの原因パターンやテスト戦略の知見は `arcana/library/grimoire/` に `{テーマ}.md`（日付なし）で記録する（例: `common-bug-patterns.md`）。
-同じ傷が繰り返されないよう、守りを固めていきましょう。
-ルールは `arcana/RULES.md` を参照。
-
 ## 行動指針
 
 - バグ修正は原因を特定してから行う（症状だけ消さない）

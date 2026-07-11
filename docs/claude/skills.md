@@ -7,6 +7,7 @@
 
 | スキル名 | コマンド | 説明 |
 |---------|---------|------|
+| new-branch | `/new-branch` | main の最新を取り込み、新しいブランチを作成。`.mainonly` がある場合は main で直接作業 |
 | commit | `/commit` | 変更内容を分析し、適切なコミットメッセージで自動コミット |
 | create-pr | `/create-pr` | 現在のブランチから GitHub PR を作成。タイトル・説明を自動生成 |
 | review-pr | `/review-pr` | GitHub PR をレビュー。差分・コミット履歴を分析し、バグ・設計・セキュリティ・改善点を指摘 |
@@ -19,6 +20,8 @@
 /スキル名 [引数]
 
 # 例
+/new-branch
+/new-branch feat/user-auth
 /commit
 /commit スコープ:認証機能
 /create-pr

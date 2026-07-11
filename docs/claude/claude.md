@@ -11,6 +11,7 @@ common/claude/
 ├── CLAUDE.md        # カスタム指示（人格・回答スタイル）
 ├── settings.json    # 権限・動作設定
 ├── skills/          # カスタムスキル（/コマンド で呼び出し）
+│   ├── new-branch/
 │   ├── commit/
 │   ├── create-pr/
 │   ├── review-pr/

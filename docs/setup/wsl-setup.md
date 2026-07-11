@@ -166,7 +166,7 @@ apt の標準リポジトリにないため、公式リポジトリを追加し�
   && sudo apt install gh -y
 ```
 
-インストール後、認証する。
+インストール後、認証する。**プロトコルは HTTPS を選択する**（`gh auth login` が git の認証情報も自動設定するため、SSH鍵は不要）。
 
 ```bash
 gh auth login
@@ -184,24 +184,6 @@ dotfiles の適用後、`~/.gitconfig.local` を作成してユーザー情報�
 ```
 
 > `.gitconfig.local` は Git 管理外のため、マシンごとに作成が必要です。`defaultBranch` 等の共通設定は `~/.gitconfig`（dotfiles 管理）に含まれています。
-
-## SSH 鍵の生成・GitHub への登録
-
-```bash
-# 鍵を生成（メールアドレスは自分のものに変更）
-ssh-keygen -t ed25519 -C "your@email.com"
-
-# 公開鍵を表示してコピー
-cat ~/.ssh/id_ed25519.pub
-```
-
-コピーした公開鍵を GitHub の **Settings → SSH and GPG keys → New SSH key** に登録する。
-
-接続確認:
-
-```bash
-ssh -T git@github.com
-```
 
 ## Claude Code のインストール
 

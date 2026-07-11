@@ -29,9 +29,9 @@
   },
   "model": "sonnet",
   "hooks": {
-    "Stop": [
+    "Notification": [
       {
-        "matcher": "",
+        "matcher": "idle_prompt",
         "hooks": [
           {
             "type": "command",

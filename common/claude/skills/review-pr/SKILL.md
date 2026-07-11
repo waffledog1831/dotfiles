@@ -90,24 +90,14 @@ gh repo view --json owner,name --jq '"\\(.owner.login)/\\(.name)"'
 
 指摘事項は**PRの差分上にインラインコメント**として投稿する。
 
-#### position の算出方法
+#### line / side の指定方法
 
-`gh pr diff <PR>` の出力を使い、**diff 全体を1行目から数えた行番号**が `position` になる。
+コメントを付けたい箇所は、diff全体を1行目から数える `position`（手動カウントが必要でミスしやすい）ではなく、**`line`（実際のファイル内の行番号）と `side`（LEFT/RIGHT）** で指定する。
 
-```
-@@ -10,6 +10,7 @@   ← この行が position 1
- context line        ← position 2
- context line        ← position 3
--removed line        ← position 4
-+added line          ← position 5
- context line        ← position 6
-```
+- `side: "RIGHT"` + `line: <変更後ファイルの行番号>` → 追加行・変更後の行を指摘する場合
+- `side: "LEFT"` + `line: <変更前ファイルの行番号>` → 削除行・変更前の行を指摘する場合
 
-ルール:
-- `@@` ヘッダー行も1としてカウントする
-- diff に複数のファイルが含まれる場合、各ファイルの `diff --git a/...` 行から数え直す（ファイルごとにリセット）
-- コメントしたい行の位置を正確に数えて `position` に設定する
-- 位置が不確かな場合は、インラインコメントではなく `body`（レビュー全体コメント）に記載する
+`gh pr diff <PR>` の diff ヘッダー（`@@ -10,6 +10,7 @@`）から、指摘したい行が変更後ファイルの何行目か（`+`側の開始行10から数える）を読み取れば、diff全体を通しでカウントする必要がない。
 
 #### 手順
 
@@ -126,7 +116,8 @@ gh repo view --json owner,name --jq '"\\(.owner.login)/\\(.name)"'
   "comments": [
     {
       "path": "ファイルパス",
-      "position": <diff内の行位置（整数）>,
+      "line": <実際のファイル内の行番号（整数）>,
+      "side": "RIGHT または LEFT",
       "body": "🔴 **Must Fix**: 指摘内容"
     }
   ]
@@ -145,7 +136,7 @@ gh repo view --json owner,name --jq '"\\(.owner.login)/\\(.name)"'
 
 #### 注意事項
 
-- `position` の算出に自信がない場合は `body` にまとめて記載する（誤った行番号は投稿エラーになる）
+- `line`/`side` の対応行が不確かな場合は、インラインコメントではなく `body`（レビュー全体コメント）に記載する（誤った行番号は投稿エラーになる）
 - 指摘がない場合は無理にコメントを作らない
 - 良い点も積極的にインラインで褒める
 - レビュー本文（`body`）にはサマリーだけ書き、詳細は全てインラインコメントに入れる

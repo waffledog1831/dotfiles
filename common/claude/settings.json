@@ -27,7 +27,7 @@
       "Bash(git clean -f *)"
     ]
   },
-  "model": "sonnet",
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -43,8 +43,7 @@
   },
   "language": "japanese",
   "autoUpdatesChannel": "latest",
-  "tui": "fullscreen",
   "showTurnDuration": true,
-  "agentPushNotifEnabled": true,
-  "inputNeededNotifEnabled": true
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
 }

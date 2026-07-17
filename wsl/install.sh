@@ -102,6 +102,16 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --yes --dearmor -o /u
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install -y terraform
 
+# docker
+echo "--- docker ---"
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+sudo usermod -aG docker "$USER"
+
 # Claude Code
 echo "--- claude code ---"
 curl -fsSL https://claude.ai/install.sh | bash
@@ -124,14 +134,7 @@ link_dir  "$WSL_DIR/nvim/lua" "$NVIM_CONFIG_DIR/lua"
 echo ""
 echo "=== wsl install done ==="
 echo ""
-echo "次に手動で実施してください:"
+echo "手動で実施してください:"
 echo ""
-echo "  1. GitHub CLI の認証"
-echo "       gh auth login"
-echo ""
-echo "  2. gcloud の認証"
-echo "       gcloud auth login"
-echo ""
-echo "  3. .bashrc の再読み込み"
-echo "       source ~/.bashrc"
+echo "  1. wsl --shutdown"
 echo ""

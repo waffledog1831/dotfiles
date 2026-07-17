@@ -15,7 +15,6 @@ GUIアプリは基本ここ。
 - WezTerm
 - VS Code
 - Android Studio
-- Rancher Desktop
 - Bruno
 - DBeaver
 - Sakura Editor
@@ -64,6 +63,13 @@ GUIアプリは基本ここ。
 - gcloud
 - terraform
 - awscli
+
+### コンテナ
+
+- docker（Docker Engine + compose plugin）
+
+> Docker Desktop / Rancher Desktop のような Windows 側の GUI ランタイムは使わず、WSL に直接 Engine を入れる。
+> `/mnt/c` 経由の I/O を挟まないぶん速く、GUI の起動待ちも不要。Dev Container もこの Engine 上で動く。
 
 ## Dev Container
 
@@ -134,6 +140,6 @@ GUIアプリは基本ここ。
 
 | 環境 | 役割 | 代表ツール |
 |------|------|-----------|
-| Windows | 操作UI | WezTerm, VS Code, Rancher Desktop |
-| WSL | 開発の母艦CLI環境 | git, ripgrep, nvim, gcloud |
+| Windows | 操作UI | WezTerm, VS Code, Android Studio |
+| WSL | 開発の母艦CLI環境 | git, ripgrep, nvim, gcloud, docker |
 | Dev Container | プロジェクト実行環境 | node, python, java, linter |

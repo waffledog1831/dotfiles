@@ -133,3 +133,6 @@ eval "$(fnm env --use-on-cd 2>/dev/null)"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - 2>/dev/null)"
+
+# Go (installed at ~/.local/go)
+export PATH="$PATH:$HOME/.local/go/bin:$(go env GOPATH 2>/dev/null || echo "$HOME/go")/bin"

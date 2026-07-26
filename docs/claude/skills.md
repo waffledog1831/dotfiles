@@ -12,6 +12,8 @@
 | create-pr | `/create-pr` | 現在のブランチから GitHub PR を作成。タイトル・説明を自動生成 |
 | review-pr | `/review-pr` | GitHub PR をレビュー。差分・コミット履歴を分析し、バグ・設計・セキュリティ・改善点を指摘 |
 | summon | `/summon` | 指定した人物（実在・架空）になりきって相談に乗り、実装まで手伝うペルソナ召喚スキル |
+| docs | `/docs` | README・API仕様書・ユーザー向けドキュメント・CHANGELOG を作成/更新 |
+| devops | `/devops` | CI/CDパイプライン・Docker・デプロイ設定・環境構築・自動化を構築/改善 |
 
 ## 使い方
 
@@ -28,6 +30,10 @@
 /create-pr main
 /review-pr 123
 /summon リーナス・トーバルズ テーマ:Git設計思想
+/docs README
+/docs CHANGELOG 対象:v1.2.0
+/devops GitHub Actions
+/devops Dockerfile
 ```
 
 ## スキルの追加方法

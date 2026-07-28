@@ -137,7 +137,7 @@ local THEMES = {
 }
 local THEME_INTERVAL = 10 * 60 -- 10分ごとに切替
 
--- ステータスバー（左: Git ブランチ + CWD / 右: テーマフレーム）
+-- ステータスバー（左: CWD / 右: テーマフレーム）
 wezterm.on("update-status", function(window, pane)
   local t = os.time()
   -- テーマ選択（10分ごと + タブIDでオフセット → タブ切替でも変わる）
@@ -174,27 +174,7 @@ wezterm.on("update-status", function(window, pane)
   -- 最後のディレクトリ名だけ表示
   local short_cwd = cwd:match("([^/\\]+)[/\\]?$") or cwd
 
-  -- Git ブランチ取得
-  local ok, stdout = pcall(function()
-    local success, out, _ = wezterm.run_child_process({
-      "git", "-C", cwd, "branch", "--show-current",
-    })
-    if success then return out:gsub("\n", "") end
-    return ""
-  end)
-
-  local branch = (ok and stdout ~= "") and stdout or ""
-
   local left = {}
-
-  if branch ~= "" then
-    for _, v in ipairs({
-      { Background = { Color = "#a6e3a1" } },
-      { Foreground = { Color = "#1e1e2e" } },
-      { Attribute = { Intensity = "Bold" } },
-      { Text = "  " .. branch .. "  " },
-    }) do table.insert(left, v) end
-  end
 
   for _, v in ipairs({
     { Background = { Color = "#89b4fa" } },

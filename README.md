@@ -48,4 +48,3 @@ bash wsl/install.sh
 - [Codex 運用ガイド](docs/codex/codex.md) — 設定ファイルの役割と適用方法
 - [カスタムスキル一覧](docs/claude/skills.md) — 利用可能なスキルとその使い方
 - [キャラクター一覧](docs/claude/arcana.md) — 必要時に呼ぶエージェントの役割
-- [AI 設定の設計と確認](docs/ai-config.md) — 簡素化の方針と比較方法

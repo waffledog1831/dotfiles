@@ -1,4 +1,4 @@
-# dotfiles の開発方針
+# dotfiles
 
 Windows / WSL 用の dotfiles。構成と適用手順は README.md を参照する。
 

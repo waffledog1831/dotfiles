@@ -1,0 +1,7 @@
+# モデルは Codex の既定値を使用する（環境ごとの利用可能モデルに追従）。
+model_reasoning_effort = "high"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[tui]
+notifications = ["agent-turn-complete", "approval-requested"]

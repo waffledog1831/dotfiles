@@ -20,6 +20,8 @@ dotfiles/
 │   ├── nvim/            # Neovim（LazyVim）
 │   └── install.sh       # WSL セットアップスクリプト
 ├── docs/                # ドキュメント
+│   ├── ai/              # Claude Code / Codex・キャラクター・スキル
+│   └── setup/           # 環境構築
 └── .gitignore
 ```
 
@@ -44,8 +46,7 @@ bash wsl/install.sh
 ## ドキュメント
 
 - [セットアップガイド](docs/setup/windows-setup.md) — 前提条件・インストール手順・注意点
-- [Claude Code 運用ガイド](docs/claude/claude.md) — 設定ファイルの役割と運用方法
-- [Codex 運用ガイド](docs/codex/codex.md) — 設定ファイルの役割と適用方法
-- [カスタムスキル一覧](docs/claude/skills.md) — 利用可能なスキルとその使い方
-- [キャラクター一覧](docs/claude/arcana.md) — 必要時に呼ぶエージェントの役割
-- [AI 設定の設計と確認](docs/ai-config.md) — 簡素化の方針と比較方法
+- [Claude Code 運用ガイド](docs/ai/claude.md) — 設定ファイルの役割と運用方法
+- [Codex 運用ガイド](docs/ai/codex.md) — 設定ファイルの役割と適用方法
+- [カスタムスキル一覧](docs/ai/skills.md) — 利用可能なスキルとその使い方
+- [キャラクター一覧](docs/ai/arcana.md) — 必要時に呼ぶエージェントの役割

@@ -1,10 +1,9 @@
-# Windows / WSL / Dev Container ツール配置
+# Windows / WSL ツール配置
 
 ## 基本方針
 
 - **Windows**: GUIアプリ・IDE・ターミナル本体
 - **WSL**: 日常CLI・開発の共通ツール
-- **Dev Container**: プロジェクト依存のランタイム・SDK
 
 ## Windows
 
@@ -69,40 +68,7 @@ GUIアプリは基本ここ。
 - docker（Docker Engine + compose plugin）
 
 > Docker Desktop / Rancher Desktop のような Windows 側の GUI ランタイムは使わず、WSL に直接 Engine を入れる。
-> `/mnt/c` 経由の I/O を挟まないぶん速く、GUI の起動待ちも不要。Dev Container もこの Engine 上で動く。
-
-## Dev Container
-
-プロジェクトごとの実行環境。
-
-### 言語ランタイム
-
-- Node.js
-- pnpm / npm / yarn
-- Python
-- Go
-- Java
-
-### ビルドツール
-
-- Gradle
-- Maven
-
-### テスト / ブラウザ
-
-- Playwright
-- Chromium
-
-### DBツール
-
-- PostgreSQL client
-- MySQL client
-
-### その他
-
-- Linter
-- Formatter
-- プロジェクト固有CLI
+> `/mnt/c` 経由の I/O を挟まないぶん速く、GUI の起動待ちも不要。
 
 ## 判断ルール
 
@@ -122,24 +88,9 @@ GUIアプリは基本ここ。
 - tmux
 - gcloud
 
-### Dev Containerに入れるもの
-
-- バージョン依存がある
-- プロジェクト専用
-- CIと揃えたい
-
-> WSL の fnm/pyenv は「複数プロジェクトで共通利用する土台」。Dev Container は「プロジェクト固有の実行環境」として使い分ける。同じ Node.js / Python でも用途が異なる。
-
-例:
-
-- node
-- python
-- java
-
 ## まとめ
 
 | 環境 | 役割 | 代表ツール |
 |------|------|-----------|
 | Windows | 操作UI | WezTerm, VS Code, Android Studio |
 | WSL | 開発の母艦CLI環境 | git, ripgrep, nvim, gcloud, docker |
-| Dev Container | プロジェクト実行環境 | node, python, java, linter |

@@ -41,4 +41,13 @@ mkdir -p "$CODEX_CONFIG_DIR"
 link_file "$COMMON_DIR/codex/AGENTS.md" "$CODEX_CONFIG_DIR/AGENTS.md"
 link_file "$COMMON_DIR/codex/config.toml" "$CODEX_CONFIG_DIR/config.toml"
 
+link_dir "$COMMON_DIR/codex/agents" "$CODEX_CONFIG_DIR/agents"
+
+# Codex ユーザースキル（他のスキルは保持する）
+mkdir -p "$HOME/.agents/skills"
+for skill_dir in "$COMMON_DIR/codex/skills/"*/; do
+  skill_name="$(basename "$skill_dir")"
+  link_dir "${skill_dir%/}" "$HOME/.agents/skills/$skill_name"
+done
+
 echo "=== common done ==="

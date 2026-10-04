@@ -211,3 +211,4 @@ bash install.sh
 - Neovim（`~/.config/nvim/`）
 - Git（`.gitconfig` / `.gitignore_global` / `~/.git-hooks/`）
 - Claude Code（`~/.claude/` 以下）
+- Codex（`~/.codex/` と `~/.agents/skills/` 以下。CLI のインストールは別途必要）

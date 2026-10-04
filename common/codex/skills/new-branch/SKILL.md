@@ -1,7 +1,6 @@
 ---
 name: new-branch
 description: 新規作業のため、デフォルトブランチを基に作業ブランチを作成する。
-disable-model-invocation: true
 ---
 
 # 新規作業ブランチ
@@ -13,7 +12,3 @@ disable-model-invocation: true
 - 未コミット変更が新規作業に無関係なら切り替えず、別ワークツリーを使うか状況を確認する。勝手に stash・reset しない。
 - fetch に失敗した場合は最新性を保証できないことを伝え、ブランチ作成が依頼の範囲であればローカルで確認できるベースを使う。
 - 作成したブランチ名とベースを報告する。
-
-## ユーザーの指定
-
-$ARGUMENTS

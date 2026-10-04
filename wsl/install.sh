@@ -4,8 +4,8 @@ set -euo pipefail
 echo "=== wsl tools setup ==="
 
 # パッケージ更新
-echo "--- apt update ---"
-sudo apt update
+echo "--- apt update / upgrade ---"
+sudo apt update && sudo apt upgrade -y
 
 # 基本ツール
 echo "--- basic tools ---"

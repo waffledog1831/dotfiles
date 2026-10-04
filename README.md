@@ -10,15 +10,16 @@ dotfiles/
 │   ├── claude/          # Claude Code（カスタム指示・権限・スキル・エージェント）
 │   ├── codex/           # Codex（カスタム指示・権限・スキル・エージェント）
 │   ├── git/             # Git 設定
-│   └── install.sh       # 共通セットアップスクリプト
+│   ├── lib.sh           # リンク配置の共通処理
+│   └── setup.sh         # 共通設定の配置
 ├── windows/             # Windows 専用設定
 │   ├── wezterm/         # WezTerm（PowerShell 7）
 │   ├── sakura/          # Sakura Editor
-│   └── install.sh       # Windows セットアップスクリプト
+│   └── setup.sh         # Windows 設定の配置
 ├── wsl/                 # WSL 専用設定
 │   ├── bash/            # Bash（.bashrc / .bash_aliases）
-│   ├── nvim/            # Neovim（LazyVim）
-│   └── install.sh       # WSL セットアップスクリプト
+│   ├── install.sh       # WSL ツール導入
+│   └── setup.sh         # WSL 設定の配置
 ├── docs/                # ドキュメント
 │   ├── ai/              # Claude Code / Codex・キャラクター・スキル
 │   └── setup/           # 環境構築
@@ -29,17 +30,20 @@ dotfiles/
 
 **Windows（Git Bash）:**
 ```bash
-bash windows/install.sh
+bash windows/setup.sh
 ```
 
-**WSL（Ubuntu）:**
+**WSL（Ubuntu、初回）:**
 ```bash
 bash wsl/install.sh
+bash wsl/setup.sh
 ```
+
+設定だけを再適用する場合は `bash wsl/setup.sh` を実行する。ツールの導入・更新は `wsl/install.sh` に分離している。
 
 各設定ファイルが `~` 以下にシンボリックリンクで配置される。共通設定（Git / Claude Code / Codex）は両環境で自動適用される。
 
-スクリプト実行後、`~/.gitconfig.local` を作成して Git のユーザー情報（name / email）を設定すること。詳細は各セットアップガイドを参照。
+スクリプト実行後、`~/.gitconfig.local` を作成して Git のユーザー情報（name / email）を設定すること。新しいブランチの初回 push は追跡先を自動設定し、fetch 時は削除済みのリモート追跡ブランチを整理する。詳細は各セットアップガイドを参照。
 
 > 前提条件やトラブルシューティングは各セットアップガイドを参照。
 

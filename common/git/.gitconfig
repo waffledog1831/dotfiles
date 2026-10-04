@@ -8,6 +8,9 @@
 	rebase = false
 [push]
 	default = current
+	autoSetupRemote = true
+[fetch]
+	prune = true
 [init]
 	defaultBranch = main
 [credential "https://github.com"]

@@ -1,43 +1,15 @@
 #!/bin/bash
 set -euo pipefail
 
-DOTFILES_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-WSL_DIR="$DOTFILES_DIR/wsl"
-
-link_file() {
-  ln -sf "$1" "$2"
-  echo "linked: $2"
-}
-
-link_dir() {
-  local src="$1" dst="$2"
-  if [ -L "$dst" ]; then
-    rm "$dst"
-  elif [ -d "$dst" ]; then
-    echo "ERROR: $dst is a real directory, not a symlink. Remove it manually." >&2
-    exit 1
-  fi
-  ln -s "$src" "$dst"
-  echo "linked: $dst"
-}
-
-echo "=== wsl install ==="
+echo "=== wsl tools setup ==="
 
 # パッケージ更新
-echo "--- apt update ---"
+echo "--- apt update / upgrade ---"
 sudo apt update && sudo apt upgrade -y
 
 # 基本ツール
 echo "--- basic tools ---"
-sudo apt install -y git openssh-client curl wget unzip zip make
-
-# CLI ユーティリティ
-echo "--- cli utilities ---"
-sudo apt install -y jq tree ripgrep fd-find
-
-# 開発効率ツール
-echo "--- dev tools ---"
-sudo apt install -y neovim tmux
+sudo apt install -y git openssh-client ca-certificates curl wget unzip zip make gnupg lsb-release jq tree ripgrep fd-find tmux
 
 # fnm (Node.js)
 echo "--- fnm ---"
@@ -68,27 +40,26 @@ fi
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-PYTHON_LTS="$(pyenv install --list | grep -E '^\s+3\.[0-9]+\.[0-9]+$' | tail -1 | tr -d ' ')"
-pyenv install -s "$PYTHON_LTS"
-pyenv global "$PYTHON_LTS"
+PYTHON_VERSION="$(pyenv install --list | grep -E '^\s+3\.[0-9]+\.[0-9]+$' | tail -1 | tr -d ' ')"
+pyenv install -s "$PYTHON_VERSION"
+pyenv global "$PYTHON_VERSION"
 
 # gh（GitHub CLI）
 echo "--- gh ---"
-(type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
-  && sudo mkdir -p -m 755 /etc/apt/keyrings \
-  && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-  && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-  && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-  && sudo apt update \
-  && sudo apt install gh -y
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null
+sudo chmod a+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+sudo apt update
+sudo apt install -y gh
 
 # awscli
 echo "--- awscli ---"
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
-unzip -q /tmp/awscliv2.zip -d /tmp
-sudo /tmp/aws/install --update
-rm -rf /tmp/awscliv2.zip /tmp/aws/
+AWS_INSTALL_DIR="$(mktemp -d)"
+trap 'rm -rf "$AWS_INSTALL_DIR"' EXIT
+curl -fsSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "$AWS_INSTALL_DIR/awscliv2.zip"
+unzip -q "$AWS_INSTALL_DIR/awscliv2.zip" -d "$AWS_INSTALL_DIR"
+sudo "$AWS_INSTALL_DIR/aws/install" --update
 
 # gcloud
 echo "--- gcloud ---"
@@ -102,13 +73,34 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --yes --dearmor -o /u
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install -y terraform
 
-# docker
+# Docker（公式の deb822 形式）
 echo "--- docker ---"
+DOCKER_ARCH="$(dpkg --print-architecture)"
+DOCKER_CODENAME="$(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")"
+DOCKER_LEGACY_SOURCE="/etc/apt/sources.list.d/docker.list"
+if [ -e "$DOCKER_LEGACY_SOURCE" ]; then
+  expected_source="deb [arch=$DOCKER_ARCH signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $DOCKER_CODENAME stable"
+  if [ "$(cat "$DOCKER_LEGACY_SOURCE")" != "$expected_source" ]; then
+    echo "ERROR: $DOCKER_LEGACY_SOURCE has custom contents. Migrate it manually before running setup." >&2
+    exit 1
+  fi
+fi
 sudo install -m 0755 -d /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
 sudo chmod a+r /etc/apt/keyrings/docker.asc
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo tee /etc/apt/sources.list.d/docker.sources >/dev/null <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $DOCKER_CODENAME
+Components: stable
+Architectures: $DOCKER_ARCH
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+if [ -e "$DOCKER_LEGACY_SOURCE" ]; then
+  sudo rm "$DOCKER_LEGACY_SOURCE"
+fi
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl enable --now docker
 sudo usermod -aG docker "$USER"
 
@@ -116,25 +108,5 @@ sudo usermod -aG docker "$USER"
 echo "--- claude code ---"
 curl -fsSL https://claude.ai/install.sh | bash
 
-# 共通設定を適用（git / claude / codex）
-bash "$DOTFILES_DIR/common/install.sh"
-
-# bash
-echo "--- bash config ---"
-link_file "$WSL_DIR/bash/.bashrc" "$HOME/.bashrc"
-link_file "$WSL_DIR/bash/.bash_aliases" "$HOME/.bash_aliases"
-
-# Neovim (LazyVim)
-echo "--- nvim config ---"
-NVIM_CONFIG_DIR="$HOME/.config/nvim"
-mkdir -p "$NVIM_CONFIG_DIR"
-link_file "$WSL_DIR/nvim/init.lua" "$NVIM_CONFIG_DIR/init.lua"
-link_dir  "$WSL_DIR/nvim/lua" "$NVIM_CONFIG_DIR/lua"
-
-echo ""
-echo "=== wsl install done ==="
-echo ""
-echo "手動で実施してください:"
-echo ""
-echo "  1. wsl --shutdown"
-echo ""
+echo "=== wsl tools setup done ==="
+echo "次に bash wsl/setup.sh で設定を適用し、Windows 側で wsl --shutdown を実行してください。"

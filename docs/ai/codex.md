@@ -15,7 +15,7 @@
 Codex CLI を別途インストール・ログインしたうえで、リポジトリのルートから実行します。
 
 ```bash
-bash common/install.sh
+bash common/setup.sh
 ```
 
 Git と Claude Code の設定も適用します。既存の設定ファイルはリンクに置き換わるため、必要ならバックアップしてください。

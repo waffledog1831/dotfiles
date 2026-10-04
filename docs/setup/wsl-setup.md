@@ -1,214 +1,80 @@
 # WSL セットアップガイド
 
-> Ubuntu 22.04 LTS 以降を想定。
+Ubuntu 22.04 LTS 以降を想定。WezTerm で `Alt+L` →「Ubuntu」を選択します。
+Windows 側のリポジトリとは別に、WSL のホームへクローンしてください。
 
-## WSL の起動
-
-WezTerm で `Alt+L` → 「Ubuntu」を選択。
-
-## パッケージの更新
+## 初回セットアップ
 
 ```bash
-sudo apt update && sudo apt upgrade -y
+git clone <repository-url> ~/dotfiles
+cd ~/dotfiles
+bash wsl/install.sh
+bash wsl/setup.sh
 ```
 
-## ツールのインストール
+`install.sh` はツール導入、`setup.sh` は設定の配置だけを行います。
+設定を再適用するときは `bash wsl/setup.sh` のみを実行してください。
+`install.sh` は最初に `apt update` と `apt upgrade -y` を実行し、設定済みの APT リポジトリで提供される更新を適用します。
 
-### 基本ツール
+## 導入するツール
 
-```bash
-sudo apt install -y git openssh-client curl wget unzip zip make
-```
+- 基本: Git、OpenSSH、CA 証明書、curl、wget、unzip、zip、make、GnuPG、lsb-release
+- CLI: jq、tree、ripgrep、fd-find、tmux
+- Node.js: fnm と Node.js LTS、EAS CLI
+- Python: pyenv と導入時点の最新安定版、およびビルド依存パッケージ
+- クラウド: gh、AWS CLI、gcloud、Terraform
+- コンテナ: Docker Engine と Compose plugin
+- AI: Claude Code。Codex CLI のインストールとログインは別途必要
 
-### CLIユーティリティ
+導入済みの fnm / pyenv は再ダウンロードしません。セットアップを再実行するとツール更新や Node.js / Python の既定バージョンの設定が行われます。
 
-`jq`・`tree`・`ripgrep` は apt でインストール可能。`fd` はパッケージ名が `fd-find` のため注意。
+## Git の認証とユーザー情報
 
-```bash
-sudo apt install -y jq tree ripgrep fd-find
-# fd コマンドとして使えるようにエイリアスを設定
-echo 'alias fd=fdfind' >> ~/.bashrc
-source ~/.bashrc
-```
-
-### 開発効率ツール
-
-**nvim**:
-
-```bash
-sudo apt install -y neovim
-```
-
-**tmux**:
-
-```bash
-sudo apt install -y tmux
-```
-
-### 言語ランタイム
-
-#### fnm（Node.js）
-
-[fnm](https://github.com/Schniz/fnm) で Node.js のバージョンを管理する。
-
-```bash
-curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$HOME/.local/share/fnm" --skip-shell
-```
-
-インストール後、`.bashrc` に以下を追記して PATH を通す（`wsl/install.sh` 経由の場合は `.bashrc` シンボリックリンクで自動適用される）。
-
-```bash
-export PATH="$HOME/.local/share/fnm:$PATH"
-eval "$(fnm env)"
-```
-
-LTS 版の Node.js をインストールしてデフォルトに設定する。
-
-```bash
-fnm install --lts
-fnm default lts-latest
-```
-
-バージョンを切り替えるときは:
-
-```bash
-fnm install 20        # 特定バージョンをインストール
-fnm use 20            # 現在のシェルで切り替え
-fnm default 20        # デフォルトを変更
-```
-
-#### EAS CLI
-
-[EAS CLI](https://docs.expo.dev/eas/) は Expo Application Services のコマンドラインツール。Node.js インストール後に npm でグローバルインストールする。
-
-```bash
-npm install -g eas-cli
-```
-
-#### pyenv（Python）
-
-[pyenv](https://github.com/pyenv/pyenv) で Python のバージョンを管理する。まず依存パッケージをインストール。
-
-```bash
-sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
-  libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils tk-dev \
-  libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-```
-
-pyenv 本体のインストール:
-
-```bash
-curl https://pyenv.run | bash
-```
-
-`.bashrc` に以下を追記して PATH を通す（`wsl/install.sh` 経由の場合は自動適用される）。
-
-```bash
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-```
-
-Python のインストールとデフォルト設定:
-
-```bash
-pyenv install 3.12.0   # インストールしたいバージョンを指定
-pyenv global 3.12.0    # グローバルデフォルトに設定
-```
-
-バージョンを切り替えるときは:
-
-```bash
-pyenv install 3.11.9   # 別バージョンをインストール
-pyenv global 3.11.9    # グローバルデフォルトを変更
-pyenv local 3.11.9     # カレントディレクトリのみ切り替え（.python-version に保存）
-```
-
-### クラウド系
-
-**awscli**:
-
-```bash
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-unzip awscliv2.zip
-sudo ./aws/install
-rm -rf awscliv2.zip aws/
-```
-
-**gcloud**:
-
-```bash
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
-echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list
-sudo apt update && sudo apt install -y google-cloud-cli
-```
-
-**terraform**:
-
-```bash
-wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo apt update && sudo apt install -y terraform
-```
-
-### gh（GitHub CLI）
-
-apt の標準リポジトリにないため、公式リポジトリを追加してインストールする。
-
-```bash
-(type -p wget >/dev/null || (sudo apt update && sudo apt install wget -y)) \
-  && sudo mkdir -p -m 755 /etc/apt/keyrings \
-  && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-  && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-  && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-  && sudo apt update \
-  && sudo apt install gh -y
-```
-
-インストール後、認証する。**プロトコルは HTTPS を選択する**（`gh auth login` が git の認証情報も自動設定するため、SSH鍵は不要）。
+GitHub CLI でログインし、HTTPS を選択します。
 
 ```bash
 gh auth login
 ```
 
-## Git ユーザー設定
-
-dotfiles の適用後、`~/.gitconfig.local` を作成してユーザー情報を設定します。
+`~/.gitconfig.local` を作成してください。このファイルはマシンごとに管理します。
 
 ```ini
-# ~/.gitconfig.local
 [user]
     name = your-username
     email = your@email.com
 ```
 
-> `.gitconfig.local` は Git 管理外のため、マシンごとに作成が必要です。`defaultBranch` 等の共通設定は `~/.gitconfig`（dotfiles 管理）に含まれています。
+共通設定により、新規ブランチの初回 `git push` で追跡先を設定し、fetch 時に削除済みのリモート追跡ブランチを整理します。
 
-## Claude Code のインストール
+## ランタイムの切り替え
 
-公式が提供するスタンドアロンインストーラーを使う。
-
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
-
-## dotfiles の適用
-
-> WSL 環境でのクローン先は `~/dotfiles`（Windows 側の `C:/repos/dotfiles` とは別）。
+`.bashrc` はインストール済みの fnm / pyenv を初期化します。fd-find は `fd` の別名で利用できます。
 
 ```bash
-git clone <repository-url> ~/dotfiles
-cd ~/dotfiles
-bash install.sh
+fnm install --lts
+fnm use --lts
+pyenv install <version>
+pyenv local <version>
 ```
 
-各設定ファイルが `~` 以下にシンボリックリンクで配置される。
+プロジェクト単位のバージョンは fnm / pyenv の設定で管理します。
 
-スクリプトが自動で適用するもの:
+## Docker
 
-- bash（`.bashrc` / `.bash_aliases`）
-- Neovim（`~/.config/nvim/`）
-- Git（`.gitconfig` / `.gitignore_global` / `~/.git-hooks/`）
-- Claude Code（`~/.claude/` 以下）
-- Codex（`~/.codex/` と `~/.agents/skills/` 以下。CLI のインストールは別途必要）
+APT のリポジトリ設定は公式手順に合わせて `/etc/apt/sources.list.d/docker.sources` の deb822 形式を使用します。
+以前このリポジトリが作成した `docker.list` は内容が一致する場合だけ置き換えます。独自の内容がある場合は停止するので、バックアップしたうえで手動で移行してください。
+
+Docker のサービスを有効化し、実行ユーザーを docker グループへ追加します。
+導入後は Windows 側の PowerShell で `wsl --shutdown` を実行し、WSL を起動し直してください。
+
+参照: [Docker の公式導入手順](https://docs.docker.com/engine/install/ubuntu/)
+
+## 配置される設定
+
+- Bash: `~/.bashrc`、`~/.bash_aliases`
+- Git: `~/.gitconfig`、`~/.gitignore_global`、`~/.git-hooks/`
+- Claude Code: `~/.claude/` の設定・スキル・エージェント
+- Codex: `~/.codex/` の設定・役割と `~/.agents/skills/` のスキル
+
+既存ファイルはシンボリックリンクに置き換わります。必要ならバックアップしてください。
+配置先に実ディレクトリがある場合は内容を削除せず停止します。

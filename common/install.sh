@@ -45,6 +45,11 @@ link_dir "$COMMON_DIR/codex/agents" "$CODEX_CONFIG_DIR/agents"
 
 # Codex ユーザースキル（他のスキルは保持する）
 mkdir -p "$HOME/.agents/skills"
+# 旧 summon リンクは、このリポジトリが配置したものだけを削除する。
+OBSOLETE_SUMMON_LINK="$HOME/.agents/skills/summon"
+if [ -L "$OBSOLETE_SUMMON_LINK" ] && [ "$(readlink "$OBSOLETE_SUMMON_LINK")" = "$COMMON_DIR/codex/skills/summon" ]; then
+  rm "$OBSOLETE_SUMMON_LINK"
+fi
 for skill_dir in "$COMMON_DIR/codex/skills/"*/; do
   skill_name="$(basename "$skill_dir")"
   link_dir "${skill_dir%/}" "$HOME/.agents/skills/$skill_name"

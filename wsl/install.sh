@@ -73,7 +73,7 @@ wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --yes --dearmor -o /u
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install -y terraform
 
-# Docker（公式の deb822 形式）
+# Docker
 echo "--- docker ---"
 DOCKER_ARCH="$(dpkg --print-architecture)"
 DOCKER_CODENAME="$(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")"

@@ -10,7 +10,7 @@ WINDOWS_DIR="$DOTFILES_DIR/windows"
 source "$DOTFILES_DIR/common/lib.sh"
 
 # 共通設定を適用
-bash "$DOTFILES_DIR/common/install.sh"
+bash "$DOTFILES_DIR/common/setup.sh"
 
 echo "=== windows install ==="
 

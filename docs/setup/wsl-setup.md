@@ -8,12 +8,12 @@ Windows 側のリポジトリとは別に、WSL のホームへクローンし�
 ```bash
 git clone <repository-url> ~/dotfiles
 cd ~/dotfiles
-bash wsl/setup.sh
 bash wsl/install.sh
+bash wsl/setup.sh
 ```
 
-`setup.sh` はツール導入、`install.sh` は設定の配置だけを行います。
-設定を再適用するときは `bash wsl/install.sh` のみを実行してください。
+`install.sh` はツール導入、`setup.sh` は設定の配置だけを行います。
+設定を再適用するときは `bash wsl/setup.sh` のみを実行してください。
 パッケージ全体の `apt upgrade` は実行しません。OS の更新は必要なときに別途行います。
 
 ## 導入するツール

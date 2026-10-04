@@ -22,7 +22,7 @@ git clone <repository-url> C:/repos/dotfiles
 
 ```bash
 cd C:/repos/dotfiles
-bash windows/install.sh
+bash windows/setup.sh
 ```
 
 各設定ファイルが `~` 以下にシンボリックリンクで配置されます。
@@ -49,7 +49,7 @@ Git Bash 上で `ln -s` を使う場合、デフォルトではファイルコ�
 export MSYS=winsymlinks:nativestrict
 ```
 
-`install.sh` 内でこの変数を設定しているため、スクリプト経由であれば自動的にネイティブシンボリックリンクが作成されます。
+`setup.sh` 内でこの変数を設定しているため、スクリプト経由であれば自動的にネイティブシンボリックリンクが作成されます。
 
 ## 配置される設定ファイル
 

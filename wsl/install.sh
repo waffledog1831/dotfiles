@@ -116,7 +116,7 @@ sudo usermod -aG docker "$USER"
 echo "--- claude code ---"
 curl -fsSL https://claude.ai/install.sh | bash
 
-# 共通設定を適用（git / claude）
+# 共通設定を適用（git / claude / codex）
 bash "$DOTFILES_DIR/common/install.sh"
 
 # bash

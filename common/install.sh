@@ -35,4 +35,10 @@ link_file "$COMMON_DIR/claude/settings.json" "$HOME/.claude/settings.json"
 link_dir  "$COMMON_DIR/claude/skills" "$HOME/.claude/skills"
 link_dir  "$COMMON_DIR/claude/agents" "$HOME/.claude/agents"
 
+# Codex（CODEX_HOME 指定時はそのディレクトリを使用）
+CODEX_CONFIG_DIR="${CODEX_HOME:-$HOME/.codex}"
+mkdir -p "$CODEX_CONFIG_DIR"
+link_file "$COMMON_DIR/codex/AGENTS.md" "$CODEX_CONFIG_DIR/AGENTS.md"
+link_file "$COMMON_DIR/codex/config.toml" "$CODEX_CONFIG_DIR/config.toml"
+
 echo "=== common done ==="

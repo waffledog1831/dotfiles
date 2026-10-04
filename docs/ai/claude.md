@@ -18,13 +18,15 @@
 
 ## 権限と通知
 
-- 通常の Bash、WebFetch、WebSearch は既存の設定どおり許可します。
+- `permissions.defaultMode: "auto"` で Bash を含む実行内容を自動審査します。Bash の一律許可はせず、WebFetch / WebSearch は明示的に許可します。
 - `.env`、`.env.*`、`secrets/` はルートと下位ディレクトリの Read / Edit / Write を拒否します。
 - 削除、force push、hard reset、git clean は確認対象です。
-- 評価順序は deny → ask → allow です。コマンドの文字列ルールはあらゆる迂回を防ぐ境界ではなく、Bash の全面許可で機密ファイルを完全に隔離できるわけではありません。
+- 評価順序は deny → ask → allow です。コマンドの文字列ルールはあらゆる迂回を防ぐ境界ではなく、Read / Edit / Write の拒否と自動審査だけを、Bash からの完全な機密隔離とは扱いません。
 - `preferredNotifChannel: "terminal_bell"` で作業完了・承認待ちをターミナルのベルで通知します。音はターミナル側に依存し、WezTerm は既定で `SystemBeep` を使用します。
 - ファイル候補の gitignore 尊重、応答後の所要時間表示、更新チャンネルは既定値を使用します。
 - 帰属表記は `settings.json` に集約し、スキル内では固定しません。
+
+`auto` に対応する最新の Claude Code を使用してください。設定は最新の SchemaStore スキーマで確認していますが、この環境では Claude Code 本体による審査動作を検証していません。
 
 ## 設定の変更
 

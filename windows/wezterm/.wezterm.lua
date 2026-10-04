@@ -47,21 +47,6 @@ local TAB_COLORS = {
   "#f9e2af", -- yellow
 }
 
--- B: プロセスタイトルから絵文字を判定
-local function get_emoji(title)
-  local t = title:lower()
-  if t:match("pwsh") or t:match("powershell") then return "🐚"
-  elseif t:match("ubuntu") or t:match("wsl") or t:match("bash") then return "🐧"
-  elseif t:match("claude") then return "🤖"
-  elseif t:match("nvim") or t:match("vim") then return "📝"
-  elseif t:match("node") or t:match("npm") then return "📦"
-  elseif t:match("python") or t:match("py") then return "🐍"
-  elseif t:match("git") then return "🌿"
-  elseif t:match("docker") then return "🐳"
-  else return "💻"
-  end
-end
-
 -- タブタイトル（虹色）
 wezterm.on("format-tab-title", function(tab, tabs, panes, cfg, hover, max_width)
   local title = tab.active_pane.title

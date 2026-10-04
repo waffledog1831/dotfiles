@@ -1,7 +1,6 @@
 ---
 name: commit
 description: 依頼された変更を確認し、日本語のコミットメッセージでコミットする。
-disable-model-invocation: true
 ---
 
 # コミット
@@ -12,7 +11,3 @@ disable-model-invocation: true
 - 帰属表記は実行ツールの設定に従い、別ツールの名前を手動で追加しない。
 - コミット後に status を確認し、ハッシュと変更の要点を報告する。フック失敗は原因を直して再実行し、フックを迂回しない。
 - 変更がなければコミットしない。push はこのスキルでは行わない。
-
-## ユーザーの指定
-
-$ARGUMENTS

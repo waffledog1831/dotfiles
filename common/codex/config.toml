@@ -1,7 +1,38 @@
-# モデルは Codex の既定値を使用する（環境ごとの利用可能モデルに追従）。
-model_reasoning_effort = "high"
+# モデルと推論レベルは実行環境の既定値を使用する。
 approval_policy = "on-request"
-sandbox_mode = "workspace-write"
+default_permissions = "development"
+
+# 通常のサンドボックス内で、機密ファイルへのアクセスを拒否する。
+[permissions.development.filesystem]
+glob_scan_max_depth = 8
+":root" = "read"
+":tmpdir" = "write"
+":slash_tmp" = "write"
+
+[permissions.development.filesystem.":workspace_roots"]
+"." = "write"
+".env" = "deny"
+".env.*" = "deny"
+"secrets" = "deny"
+"**/.env" = "deny"
+"**/.env.*" = "deny"
+"**/secrets" = "deny"
 
 [tui]
 notifications = ["agent-turn-complete", "approval-requested"]
+
+[agents.lilia]
+description = "独立した実装タスク、またはリリアの指名に対応する。普段の実装はメインが担当。"
+config_file = "agents/lilia.toml"
+
+[agents.sion]
+description = "独立した広いコード調査、またはシオンの指名に対応する。小さな検索はメインが担当。"
+config_file = "agents/sion.toml"
+
+[agents.ordos]
+description = "別視点でのコード・設計レビュー、またはオルドスの指名に対応する。"
+config_file = "agents/ordos.toml"
+
+[agents.luca]
+description = "独立したセキュリティレビュー、またはルカの指名に対応する。"
+config_file = "agents/luca.toml"

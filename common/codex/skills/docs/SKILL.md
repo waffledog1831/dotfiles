@@ -1,7 +1,6 @@
 ---
 name: docs
 description: 実装や仕様に基づき、README・利用ガイド・API仕様・CHANGELOGを整備する。
-disable-model-invocation: true
 ---
 
 # ドキュメント整備
@@ -10,7 +9,3 @@ disable-model-invocation: true
 - 実際の挙動と手順を記述する。確認できない仕様は断定せず、確認が必要な箇所を示す。
 - 変更に関係する目次・リンク・使用例も更新する。重複説明や実装から自明なコメントを増やさない。
 - 記載したパス・コマンド・設定値を確認し、実行していない手順は検証済みとしない。
-
-## ユーザーの指定
-
-$ARGUMENTS

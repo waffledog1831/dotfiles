@@ -1,7 +1,6 @@
 ---
 name: create-pr
 description: 依頼された変更をコミット・pushし、日本語のGitHub PRを作成または更新する。
-disable-model-invocation: true
 ---
 
 # PR 作成・更新
@@ -14,7 +13,3 @@ disable-model-invocation: true
 - タイトルと本文は日本語。本文には具体的な変更後の挙動、検証結果、必要な注意点を書く。リポジトリの PR テンプレートがあれば従う。
 - 複数行の本文はファイルに書いて `gh pr create --body-file <file>` に渡すか、API の構造化引数を使う。
 - 作成・更新した PR の URL を報告する。マージは別途依頼された場合だけ行う。
-
-## ユーザーの指定
-
-$ARGUMENTS

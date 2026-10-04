@@ -1,7 +1,6 @@
 ---
 name: review-pr
 description: GitHub PRをレビューし、根拠のある不具合とリスクを報告する。投稿は依頼された場合に行う。
-disable-model-invocation: true
 ---
 
 # PR レビュー
@@ -14,7 +13,3 @@ disable-model-invocation: true
 - 投稿時は head が変わっていないか再確認する。インラインコメントは diff 上の実ファイル行番号と LEFT / RIGHT を使い、不確かな行は本文に書く。
 - 承認・変更要求は依頼された場合だけ行う。それ以外の投稿は COMMENT とする。自分の PR を APPROVE しない。
 - 指摘がなければその旨と検証範囲を伝え、問題が存在しない保証とはしない。
-
-## ユーザーの指定
-
-$ARGUMENTS

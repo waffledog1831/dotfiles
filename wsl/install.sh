@@ -27,9 +27,6 @@ fnm default lts-latest
 echo "--- eas-cli ---"
 npm install -g eas-cli
 
-echo "--- codex ---"
-npm install -g @openai/codex
-
 # pyenv (Python)
 echo "--- pyenv ---"
 sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \
@@ -110,6 +107,9 @@ sudo usermod -aG docker "$USER"
 # Claude Code
 echo "--- claude code ---"
 curl -fsSL https://claude.ai/install.sh | bash
+
+echo "--- codex ---"
+npm install -g @openai/codex
 
 echo "=== wsl tools setup done ==="
 echo "次に bash wsl/setup.sh で設定を適用し、Windows 側で wsl --shutdown を実行してください。"

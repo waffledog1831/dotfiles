@@ -27,6 +27,9 @@ fnm default lts-latest
 echo "--- eas-cli ---"
 npm install -g eas-cli
 
+echo "--- codex ---"
+npm install -g @openai/codex
+
 # pyenv (Python)
 echo "--- pyenv ---"
 sudo apt install -y build-essential libssl-dev zlib1g-dev libbz2-dev \

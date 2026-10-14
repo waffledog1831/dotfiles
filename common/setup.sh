@@ -8,7 +8,7 @@ source "$COMMON_DIR/lib.sh"
 
 echo "=== common install ==="
 
-# 作業用ディレクトリ（WSL の WezTerm 起動先）
+# 作業用ディレクトリ
 mkdir -p "$HOME/repos"
 
 # Git

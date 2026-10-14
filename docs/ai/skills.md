@@ -9,8 +9,7 @@
 | commit | 作業対象だけを日本語メッセージでコミット |
 | create-pr | 作業対象をコミット・push し、PR を作成または更新 |
 | review-pr | 根拠付きのレビュー。外部投稿は依頼に含まれる場合のみ |
-| docs | 実装に基づくドキュメント整備 |
-| devops | CI/CD・コンテナ・環境構築の改善 |
+| simplify | ドキュメントとコードのシンプル化 |
 
 Claude Code では `/commit`、`/create-pr`、`/review-pr 123` などで呼び出します。
 Codex では `$commit`、`$create-pr`、`$review-pr` などを指定し、対象を併記します。

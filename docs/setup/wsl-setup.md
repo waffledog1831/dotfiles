@@ -1,8 +1,6 @@
 # WSL セットアップガイド
 
 Ubuntu 22.04 LTS 以降を想定。WezTerm で `Alt+L` →「Ubuntu」を選択します。
-Ubuntu の起動ディレクトリは `~/repos` です。`bash wsl/setup.sh` は共通セットアップでこのディレクトリを作成します。
-初回セットアップ前は、Ubuntu 内で `mkdir -p ~/repos` を実行してください。
 Windows 側のリポジトリとは別に、WSL のホームへクローンしてください。
 
 ## 初回セットアップ
@@ -80,9 +78,3 @@ Docker のサービスを有効化し、実行ユーザーを docker グルー�
 
 既存ファイルはシンボリックリンクに置き換わります。必要ならバックアップしてください。
 配置先に実ディレクトリがある場合は内容を削除せず停止します。
-
-## WezTerm の起動ディレクトリ変更を適用する
-
-Windows 側の dotfiles を更新し、WezTerm の設定を再読み込みしてください。
-WSL 側では `mkdir -p ~/repos` または `bash wsl/setup.sh` で起動先を用意します。
-`Alt+L` →「Ubuntu」で新しく開いたタブの `pwd` が `/home/<ユーザー名>/repos` になることを確認してください。

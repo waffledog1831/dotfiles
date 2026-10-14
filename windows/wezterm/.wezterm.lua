@@ -177,7 +177,7 @@ config.default_cwd = "C:/repos"
 
 -- ランチャーメニュー（Alt+l で開く）
 config.launch_menu = {
-  { label = "Ubuntu", args = { "wsl.exe", "-d", "Ubuntu", "--cd", "~" } },
+  { label = "Ubuntu", args = { "wsl.exe", "-d", "Ubuntu", "--cd", "~/repos" } },
 }
 
 -- キーバインド

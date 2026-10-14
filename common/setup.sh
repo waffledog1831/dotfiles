@@ -8,6 +8,9 @@ source "$COMMON_DIR/lib.sh"
 
 echo "=== common install ==="
 
+# 作業用ディレクトリ
+mkdir -p "$HOME/repos"
+
 # Git
 link_path "$COMMON_DIR/git/.gitconfig" "$HOME/.gitconfig"
 link_path "$COMMON_DIR/git/.gitignore_global" "$HOME/.gitignore_global"

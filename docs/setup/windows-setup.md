@@ -66,9 +66,22 @@ export MSYS=winsymlinks:nativestrict
 | `common/git/.gitconfig` | `~/.gitconfig` | Git の共通設定（ユーザー情報は別途 `~/.gitconfig.local` に設定） |
 | `common/git/.gitignore_global` | `~/.gitignore_global` | Git のグローバル除外設定 |
 | `common/git/hooks/` | `~/.git-hooks/` | Git のグローバルフック |
+| `windows/terminal/settings.json` | Windows Terminal の `settings.json` | 配色・透過・Ubuntu / Herdr ランチャー |
 | `windows/wezterm/.wezterm.lua` | `~/.wezterm.lua` | WezTerm の設定 |
 | `windows/sakura/sakura.ini` | `~/AppData/Roaming/sakura/sakura.ini` | Sakura Editor の設定 |
 | `windows/powershell/Microsoft.PowerShell_profile.ps1` | `~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1` | PowerShell 7 プロファイル |
+
+## Windows Terminal
+
+Windows Terminal を一度起動してから、Git Bash で `bash windows/setup.sh` を実行する。
+Store 版と非パッケージ版の既存設定ディレクトリを検出し、`settings.json` を
+リポジトリの設定へのリンクに置き換える。
+
+既定は `~/repos` で起動する「Ubuntu / Herdr」。`Alt+L` で通常の Ubuntu と
+PowerShell 7 も選べる。配色は Catppuccin Mocha、フォントは Cascadia Code 12pt、
+不透明度は 90%。分割やセッション管理は Herdr で行う。
+
+Herdr の導入前は `Alt+L` →「Ubuntu」を使う。Preview 版は自動配置の対象外。
 
 ## WSL (Ubuntu) のセットアップ
 

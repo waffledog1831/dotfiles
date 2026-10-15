@@ -81,7 +81,7 @@ Store 版と非パッケージ版の既存設定ディレクトリを検出し�
 PowerShell 7 も選べる。配色は Catppuccin Mocha、フォントは Cascadia Code 12pt、
 不透明度は 90%。分割やセッション管理は Herdr で行う。
 
-Herdr の導入前は `Alt+L` →「Ubuntu」を使う。Preview 版は自動配置の対象外。
+Preview 版は自動配置の対象外。
 
 ## WSL (Ubuntu) のセットアップ
 

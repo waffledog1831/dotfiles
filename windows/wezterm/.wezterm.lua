@@ -183,14 +183,7 @@ config.launch_menu = {
 -- キーバインド
 config.keys = {
   { key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
-  { key = "w", mods = "ALT", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
-  {
-    key = "a",
-    mods = "ALT",
-    action = wezterm.action.SpawnCommandInNewTab({
-      args = { "pwsh.exe", "-NoExit", "-Command", "claude --agent lilia" },
-    }),
-  },
+  { key = "w", mods = "ALT", action = wezterm.action.CloseCurrentPane({ confirm = false }) },
 }
 
 return config

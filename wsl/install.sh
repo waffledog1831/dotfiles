@@ -11,6 +11,18 @@ sudo apt update && sudo apt upgrade -y
 echo "--- basic tools ---"
 sudo apt install -y git openssh-client ca-certificates curl wget unzip zip make gnupg lsb-release jq tree ripgrep fd-find tmux
 
+# gh（GitHub CLI）
+echo "--- gh ---"
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null
+sudo chmod a+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+sudo apt update
+sudo apt install -y gh
+
+echo "--- herdr ---"
+curl -fsSL https://herdr.dev/install.sh | sh
+
 # fnm (Node.js)
 echo "--- fnm ---"
 if [ ! -f "$HOME/.local/share/fnm/fnm" ]; then
@@ -22,10 +34,6 @@ export PATH="$HOME/.local/share/fnm:$PATH"
 eval "$(fnm env 2>/dev/null)"
 fnm install --lts
 fnm default lts-latest
-
-# EAS CLI
-echo "--- eas-cli ---"
-npm install -g eas-cli
 
 # pyenv (Python)
 echo "--- pyenv ---"
@@ -44,14 +52,9 @@ PYTHON_VERSION="$(pyenv install --list | grep -E '^\s+3\.[0-9]+\.[0-9]+$' | tail
 pyenv install -s "$PYTHON_VERSION"
 pyenv global "$PYTHON_VERSION"
 
-# gh（GitHub CLI）
-echo "--- gh ---"
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null
-sudo chmod a+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
-sudo apt update
-sudo apt install -y gh
+# EAS CLI
+echo "--- eas-cli ---"
+npm install -g eas-cli
 
 # awscli
 echo "--- awscli ---"
@@ -110,9 +113,6 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 echo "--- codex ---"
 npm install -g @openai/codex
-
-echo "--- herdr ---"
-curl -fsSL https://herdr.dev/install.sh | sh
 
 echo "=== wsl tools setup done ==="
 echo "次に bash wsl/setup.sh で設定を適用し、Windows 側で wsl --shutdown を実行してください。"

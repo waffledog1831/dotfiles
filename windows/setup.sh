@@ -22,6 +22,15 @@ link_path "$WINDOWS_DIR/powershell/Microsoft.PowerShell_profile.ps1" "$PS_PROFIL
 # WezTerm
 link_path "$WINDOWS_DIR/wezterm/.wezterm.lua" "$HOME/.wezterm.lua"
 
+TERMINAL_DIRS=(
+  "$HOME/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState"
+  "$HOME/AppData/Local/Microsoft/Windows Terminal"
+)
+for terminal_dir in "${TERMINAL_DIRS[@]}"; do
+  [ -d "$terminal_dir" ] || continue
+  link_path "$WINDOWS_DIR/terminal/settings.json" "$terminal_dir/settings.json"
+done
+
 # Sakura Editor
 SAKURA_DIR="$HOME/AppData/Roaming/sakura"
 mkdir -p "$SAKURA_DIR"

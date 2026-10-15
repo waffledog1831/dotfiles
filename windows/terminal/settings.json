@@ -1,0 +1,79 @@
+{
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "defaultProfile": "{551bd9ce-fcfe-40ce-b536-c8acbe033732}",
+  "theme": "dark",
+  "initialCols": 140,
+  "initialRows": 38,
+  "alwaysShowTabs": false,
+  "profiles": {
+    "defaults": {
+      "colorScheme": "Catppuccin Mocha",
+      "font": {
+        "face": "Cascadia Code",
+        "size": 12
+      },
+      "opacity": 90,
+      "useAcrylic": true,
+      "padding": "10, 8, 10, 8",
+      "cursorShape": "bar"
+    },
+    "list": [
+      {
+        "guid": "{551bd9ce-fcfe-40ce-b536-c8acbe033732}",
+        "name": "Ubuntu / Herdr",
+        "commandline": "wsl.exe -d Ubuntu --cd ~/repos --exec bash -ic \"exec herdr\"",
+        "tabColor": "#cba6f7"
+      },
+      {
+        "guid": "{658690ed-5323-491b-a1ba-15315b1d8263}",
+        "name": "Ubuntu",
+        "commandline": "wsl.exe -d Ubuntu --cd ~/repos",
+        "tabColor": "#a6e3a1"
+      },
+      {
+        "guid": "{347bdc40-63df-413b-b68d-f1c649b55499}",
+        "name": "PowerShell 7",
+        "commandline": "pwsh.exe",
+        "startingDirectory": "C:\\repos",
+        "tabColor": "#89b4fa"
+      }
+    ]
+  },
+  "schemes": [
+    {
+      "name": "Catppuccin Mocha",
+      "background": "#1e1e2e",
+      "foreground": "#cdd6f4",
+      "cursorColor": "#f5e0dc",
+      "selectionBackground": "#585b70",
+      "black": "#45475a",
+      "red": "#f38ba8",
+      "green": "#a6e3a1",
+      "yellow": "#f9e2af",
+      "blue": "#89b4fa",
+      "purple": "#f5c2e7",
+      "cyan": "#94e2d5",
+      "white": "#bac2de",
+      "brightBlack": "#585b70",
+      "brightRed": "#f38ba8",
+      "brightGreen": "#a6e3a1",
+      "brightYellow": "#f9e2af",
+      "brightBlue": "#89b4fa",
+      "brightPurple": "#f5c2e7",
+      "brightCyan": "#94e2d5",
+      "brightWhite": "#a6adc8"
+    }
+  ],
+  "actions": [
+    {
+      "command": "openNewTabDropdown",
+      "id": "User.Launcher"
+    }
+  ],
+  "keybindings": [
+    {
+      "keys": "alt+l",
+      "id": "User.Launcher"
+    }
+  ]
+}

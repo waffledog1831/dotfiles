@@ -1,6 +1,6 @@
 # Claude Code 運用ガイド
 
-個人設定を `common/claude/` で管理し、`common/setup.sh` で配置します。
+個人設定を `wsl/claude/` で管理し、`wsl/setup.sh` で配置します。
 
 | 管理元 | 配置先 | 内容 |
 |--------|--------|------|
@@ -8,6 +8,8 @@
 | `settings.json` | `~/.claude/settings.json` | モデル・権限・帰属表記・通知 |
 | `skills/` | `~/.claude/skills/` | 明示的に呼ぶ運用手順 |
 | `agents/` | `~/.claude/agents/` | 必要時だけ使うキャラクターと役割 |
+
+WSL 専用の設定です。Windows 側には配置しません。
 
 ## 運用方針
 
@@ -30,7 +32,7 @@
 
 ## 設定の変更
 
-管理元を編集し、必要に応じて Claude Code を再起動します。新しいリンクの配置は `bash common/setup.sh` で行います。
+管理元を編集し、必要に応じて Claude Code を再起動します。新しいリンクの配置は `bash wsl/setup.sh` で行います。
 既存ファイルは置き換わるため必要ならバックアップします。リンク先に実ディレクトリがある場合は停止し、内容を勝手に削除しません。
 
 ## Remote Control

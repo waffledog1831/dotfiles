@@ -14,6 +14,19 @@ bash "$DOTFILES_DIR/common/setup.sh"
 
 echo "=== windows install ==="
 
+# 移動前の管理対象リンクだけを解除し、個人設定や認証情報は保持する。
+for name in CLAUDE.md settings.json skills agents; do
+  unlink_path_if_target "$DOTFILES_DIR/common/claude/$name" "$HOME/.claude/$name"
+done
+CODEX_CONFIG_DIR="${CODEX_HOME:-$HOME/.codex}"
+for name in AGENTS.md config.toml agents; do
+  unlink_path_if_target "$DOTFILES_DIR/common/codex/$name" "$CODEX_CONFIG_DIR/$name"
+done
+for skill_link in "$HOME/.agents/skills/"*; do
+  skill_name="$(basename "$skill_link")"
+  unlink_path_if_target "$DOTFILES_DIR/common/codex/skills/$skill_name" "$skill_link"
+done
+
 # PowerShell 7 プロファイル（WezTerm OSC 7 CWD通知など）
 PS_PROFILE_DIR="$HOME/Documents/PowerShell"
 mkdir -p "$PS_PROFILE_DIR"

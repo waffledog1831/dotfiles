@@ -19,4 +19,32 @@ link_path "$WSL_DIR/bin/win-powershell" "$HOME/.local/bin/win-powershell"
 mkdir -p "$HOME/.config/herdr"
 link_path "$WSL_DIR/herdr/config.toml" "$HOME/.config/herdr/config.toml"
 
+# Claude Code
+mkdir -p "$HOME/.claude"
+link_path "$WSL_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+link_path "$WSL_DIR/claude/settings.json" "$HOME/.claude/settings.json"
+link_path "$WSL_DIR/claude/skills" "$HOME/.claude/skills"
+link_path "$WSL_DIR/claude/agents" "$HOME/.claude/agents"
+
+# Codex（CODEX_HOME 指定時はそのディレクトリを使用）
+CODEX_CONFIG_DIR="${CODEX_HOME:-$HOME/.codex}"
+mkdir -p "$CODEX_CONFIG_DIR"
+link_path "$WSL_DIR/codex/AGENTS.md" "$CODEX_CONFIG_DIR/AGENTS.md"
+link_path "$WSL_DIR/codex/config.toml" "$CODEX_CONFIG_DIR/config.toml"
+
+link_path "$WSL_DIR/codex/agents" "$CODEX_CONFIG_DIR/agents"
+
+# Codex ユーザースキル（他のスキルは保持する）
+mkdir -p "$HOME/.agents/skills"
+for obsolete_skill in summon docs devops; do
+  obsolete_link="$HOME/.agents/skills/$obsolete_skill"
+  for source_dir in "$DOTFILES_DIR/common/codex" "$WSL_DIR/codex"; do
+    unlink_path_if_target "$source_dir/skills/$obsolete_skill" "$obsolete_link"
+  done
+done
+for skill_dir in "$WSL_DIR/codex/skills/"*/; do
+  skill_name="$(basename "$skill_dir")"
+  link_path "${skill_dir%/}" "$HOME/.agents/skills/$skill_name"
+done
+
 echo "=== wsl config done ==="

@@ -126,6 +126,8 @@ POWERSHELL
 
 ## 配置される設定
 
+Claude・Codex の設定は `wsl/claude/`・`wsl/codex/` で管理します。旧 `common/` からのリンクはセットアップ再実行で更新します。`CODEX_HOME` を指定している場合は、同じ値で実行してください。
+
 - Bash: `~/.bashrc`、`~/.bash_aliases`
 - Windows PowerShell 呼び出し: `~/.local/bin/win-powershell`
 - Herdr: `~/.config/herdr/config.toml`

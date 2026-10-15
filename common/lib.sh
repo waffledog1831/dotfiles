@@ -17,3 +17,11 @@ link_path() {
   ln -sfn "$src" "$dst"
   echo "linked: $dst"
 }
+
+unlink_path_if_target() {
+  local src="$1" dst="$2"
+  if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
+    rm -- "$dst"
+    echo "unlinked: $dst"
+  fi
+}

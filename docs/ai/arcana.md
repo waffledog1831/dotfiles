@@ -20,7 +20,7 @@ Claude Code の `/agents` で役割を確認できます。Codex の役割は `c
 
 ## 定義の変更
 
-- Claude Code: `common/claude/agents/<名前>.md`。frontmatter に `name`、`description`、必要な `tools`、`model: inherit` を指定し、本文に短い人格と担当範囲を書く。
-- Codex: `common/codex/agents/<名前>.toml`。`developer_instructions` に人格と担当範囲を記述し、`config.toml` に役割を登録する。
+- Claude Code: `wsl/claude/agents/<名前>.md`。frontmatter に `name`、`description`、必要な `tools`、`model: inherit` を指定し、本文に短い人格と担当範囲を書く。
+- Codex: `wsl/codex/agents/<名前>.toml`。`developer_instructions` に人格と担当範囲を記述し、`config.toml` に役割を登録する。
 
 モデルはメインの設定を継承し、専用の永続メモリは既定で有効にしません。役割の追加は独立した文脈で任せる価値がある場合に限ります。

@@ -1,24 +1,26 @@
 # Codex 運用ガイド
 
+WSL 専用の設定です。Windows 側には配置しません。
+
 ## 配置
 
 | 管理元 | 配置先 | 内容 |
 |--------|--------|------|
-| `common/codex/AGENTS.md` | `~/.codex/AGENTS.md` | アイの口調、日本語、作業の境界 |
-| `common/codex/config.toml` | `~/.codex/config.toml` | 承認・アクセス権・通知・役割の登録 |
-| `common/codex/agents/` | `~/.codex/agents/` | キャラクターと役割別の設定 |
-| `common/codex/skills/` | `~/.agents/skills/` 配下の同名リンク | 必要時に読み込む運用手順 |
+| `wsl/codex/AGENTS.md` | `~/.codex/AGENTS.md` | アイの口調、日本語、作業の境界 |
+| `wsl/codex/config.toml` | `~/.codex/config.toml` | 承認・アクセス権・通知・役割の登録 |
+| `wsl/codex/agents/` | `~/.codex/agents/` | キャラクターと役割別の設定 |
+| `wsl/codex/skills/` | `~/.agents/skills/` 配下の同名リンク | 必要時に読み込む運用手順 |
 
 `CODEX_HOME` を指定すると設定とエージェントの配置先が変わります。ユーザースキルの探索先は `~/.agents/skills/` です。
 スキルは個別にリンクし、別のスキルや認証情報・履歴を含むディレクトリ全体は置き換えません。
 
-Codex CLI を別途インストール・ログインしたうえで、リポジトリのルートから実行します。
+`wsl/install.sh` で Codex CLI を導入し、ログインしたうえで、リポジトリのルートから実行します。
 
 ```bash
-bash common/setup.sh
+bash wsl/setup.sh
 ```
 
-Git と Claude Code の設定も適用します。既存の設定ファイルはリンクに置き換わるため、必要ならバックアップしてください。
+Git・Bash・Claude Code などの WSL 設定も適用します。既存の設定ファイルはリンクに置き換わるため、必要ならバックアップしてください。
 実ディレクトリとの衝突は内容を削除せずエラーにします。設定変更後は Codex を再起動します。
 
 ## 運用

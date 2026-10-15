@@ -14,6 +14,6 @@
 Claude Code では `/commit`、`/create-pr`、`/review-pr 123` などで呼び出します。
 Codex では `$commit`、`$create-pr`、`$review-pr` などを指定し、対象を併記します。
 
-定義はそれぞれ `common/claude/skills/<名前>/SKILL.md` と `common/codex/skills/<名前>/SKILL.md` にあります。
+定義はそれぞれ `wsl/claude/skills/<名前>/SKILL.md` と `wsl/codex/skills/<名前>/SKILL.md` にあります。
 手順の本文はそろえ、Claude Code は `disable-model-invocation`、Codex は `agents/openai.yaml` の `allow_implicit_invocation` で自動呼び出しを無効にしています。
 変更時は両方を確認し、帰属表記や専用ツールの記法を別ツールへ持ち込まないでください。

@@ -25,7 +25,8 @@ cd C:/repos/dotfiles
 bash windows/setup.sh
 ```
 
-各設定ファイルが `~` 以下にシンボリックリンクで配置されます。
+各設定ファイルが `~` 以下にシンボリックリンクで配置されます。Claude Code・Codex の設定は WSL にのみ配置します。
+既存環境では、このリポジトリの旧 `common/claude/`・`common/codex/` を指すリンクだけを解除します。実ファイル・独自リンク・認証情報・会話履歴は保持し、Windows 側の AI 本体はアンインストールしません。
 
 ### 3. Git ユーザー設定
 
@@ -55,14 +56,6 @@ export MSYS=winsymlinks:nativestrict
 
 | ソース | リンク先 | 説明 |
 |--------|----------|------|
-| `common/claude/CLAUDE.md` | `~/.claude/CLAUDE.md` | Claude Code のカスタム指示 |
-| `common/claude/settings.json` | `~/.claude/settings.json` | Claude Code の権限・設定 |
-| `common/claude/skills/` | `~/.claude/skills/` | Claude Code カスタムスキル |
-| `common/claude/agents/` | `~/.claude/agents/` | Claude Code エージェント定義 |
-| `common/codex/AGENTS.md` | `~/.codex/AGENTS.md` | Codex のカスタム指示 |
-| `common/codex/config.toml` | `~/.codex/config.toml` | Codex の権限・役割・通知 |
-| `common/codex/agents/` | `~/.codex/agents/` | Codex エージェント定義 |
-| `common/codex/skills/<名前>/` | `~/.agents/skills/<名前>/` | Codex カスタムスキル |
 | `common/git/.gitconfig` | `~/.gitconfig` | Git の共通設定（ユーザー情報は別途 `~/.gitconfig.local` に設定） |
 | `common/git/.gitignore_global` | `~/.gitignore_global` | Git のグローバル除外設定 |
 | `common/git/hooks/` | `~/.git-hooks/` | Git のグローバルフック |

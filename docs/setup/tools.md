@@ -10,7 +10,6 @@
 GUIアプリは基本ここ。
 
 - Git for Windows
-- Claude Code
 - WezTerm
 - VS Code
 - Android Studio
@@ -44,7 +43,7 @@ GUIアプリは基本ここ。
 ### 開発効率ツール
 
 - tmux
-- Claude Code（インストール手順は [wsl-setup.md](wsl-setup.md) を参照）
+- Claude Code・Codex CLI（インストール手順は [wsl-setup.md](wsl-setup.md) を参照）
 
 ### 言語ランタイム管理
 

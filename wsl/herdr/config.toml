@@ -1,0 +1,5 @@
+[theme]
+name = "catppuccin"
+
+[ui]
+tab_bar_position = "bottom"

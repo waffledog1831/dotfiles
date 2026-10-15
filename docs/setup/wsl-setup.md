@@ -20,6 +20,7 @@ bash wsl/setup.sh
 
 - 基本: Git、OpenSSH、CA 証明書、curl、wget、unzip、zip、make、GnuPG、lsb-release
 - CLI: jq、tree、ripgrep、fd-find、tmux
+- ターミナル管理: Herdr
 - Node.js: fnm と Node.js LTS、EAS CLI
 - Python: pyenv と導入時点の最新安定版、およびビルド依存パッケージ
 - クラウド: gh、AWS CLI、gcloud、Terraform
@@ -69,9 +70,36 @@ Docker のサービスを有効化し、実行ユーザーを docker グルー�
 
 参照: [Docker の公式導入手順](https://docs.docker.com/engine/install/ubuntu/)
 
+## Herdr
+
+WezTerm で `Alt+L` →「Ubuntu / Herdr」を選択します。通常の「Ubuntu」も利用できます。
+Herdr は WSL 内で動作し、既存のセッションがあれば再接続します。
+既存環境へ Herdr だけ追加する場合は、WSL で次を実行してください。
+
+```bash
+curl -fsSL https://herdr.dev/install.sh | sh
+bash wsl/setup.sh
+```
+
+配色は Catppuccin、タブバーは下に配置します。キーは標準の `Ctrl+B` に続けて入力します。
+
+| 操作 | 次に押すキー |
+|------|-------------|
+| 新しいタブ | `c` |
+| 左右 / 上下に分割 | `v` / `-` |
+| ワークスペース選択 | `w` |
+| ペインを閉じる | `x` |
+| 切断して作業を継続 | `q` |
+
+`Alt+W` は WezTerm 側を閉じる操作です。Herdr 内のペインは `Ctrl+B` → `x` で閉じます。
+`wsl --shutdown` や PC 再起動では実行中のプロセスは停止します。
+
+参照: [Herdr の公式ガイド](https://herdr.dev/docs/quick-start/)
+
 ## 配置される設定
 
 - Bash: `~/.bashrc`、`~/.bash_aliases`
+- Herdr: `~/.config/herdr/config.toml`
 - Git: `~/.gitconfig`、`~/.gitignore_global`、`~/.git-hooks/`
 - Claude Code: `~/.claude/` の設定・スキル・エージェント
 - Codex: `~/.codex/` の設定・役割と `~/.agents/skills/` のスキル

@@ -14,7 +14,7 @@ bash wsl/setup.sh
 
 `install.sh` はツール導入、`setup.sh` は設定の配置だけを行います。
 設定を再適用するときは `bash wsl/setup.sh` のみを実行してください。
-`install.sh` は最初に `apt update` と `apt upgrade -y` を実行し、設定済みの APT リポジトリで提供される更新を適用します。
+`install.sh` は `apt update` でパッケージ一覧を更新し、必要なツールを導入します。
 
 ## 導入するツール
 

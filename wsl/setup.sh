@@ -33,16 +33,6 @@ link_path "$WSL_DIR/codex/agents" "$CODEX_CONFIG_DIR/agents"
 
 # Codex ユーザースキル（他のスキルは保持する）
 mkdir -p "$HOME/.agents/skills"
-for obsolete_skill in summon docs devops; do
-  obsolete_link="$HOME/.agents/skills/$obsolete_skill"
-  if [ -L "$obsolete_link" ]; then
-    case "$(readlink "$obsolete_link")" in
-      "$DOTFILES_DIR/common/codex/skills/$obsolete_skill"|"$WSL_DIR/codex/skills/$obsolete_skill")
-        rm "$obsolete_link"
-        ;;
-    esac
-  fi
-done
 for skill_dir in "$WSL_DIR/codex/skills/"*/; do
   skill_name="$(basename "$skill_dir")"
   link_path "${skill_dir%/}" "$HOME/.agents/skills/$skill_name"

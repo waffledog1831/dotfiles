@@ -19,7 +19,7 @@ config.default_cursor_style = "BlinkingBar"
 
 -- タブバー（retro モード・下に配置）
 config.use_fancy_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = false
+config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.status_update_interval = 500
 
@@ -178,6 +178,10 @@ config.default_cwd = "C:/repos"
 -- ランチャーメニュー（Alt+l で開く）
 config.launch_menu = {
   { label = "Ubuntu", args = { "wsl.exe", "-d", "Ubuntu", "--cd", "~/repos" } },
+  {
+    label = "Ubuntu / Herdr",
+    args = { "wsl.exe", "-d", "Ubuntu", "--cd", "~/repos", "--exec", "bash", "-ic", "exec herdr" },
+  },
 }
 
 -- キーバインド

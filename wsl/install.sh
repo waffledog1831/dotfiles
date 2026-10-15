@@ -111,5 +111,8 @@ curl -fsSL https://claude.ai/install.sh | bash
 echo "--- codex ---"
 npm install -g @openai/codex
 
+echo "--- herdr ---"
+curl -fsSL https://herdr.dev/install.sh | sh
+
 echo "=== wsl tools setup done ==="
 echo "次に bash wsl/setup.sh で設定を適用し、Windows 側で wsl --shutdown を実行してください。"

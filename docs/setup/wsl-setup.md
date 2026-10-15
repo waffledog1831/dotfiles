@@ -25,7 +25,7 @@ bash wsl/setup.sh
 - Python: pyenv と導入時点の最新安定版、およびビルド依存パッケージ
 - クラウド: gh、AWS CLI、gcloud、Terraform
 - コンテナ: Docker Engine と Compose plugin
-- AI: Claude Code。Codex CLI のインストールとログインは別途必要
+- AI: Claude Code、Codex CLI（ログインは別途必要）
 
 導入済みの fnm / pyenv は再ダウンロードしません。セットアップを再実行するとツール更新や Node.js / Python の既定バージョンの設定が行われます。
 

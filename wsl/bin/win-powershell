@@ -1,0 +1,26 @@
+#!/bin/bash
+set -euo pipefail
+
+if [ "${1:-}" = "--help" ]; then
+  echo 'Usage: win-powershell <script.ps1> [arguments...]'
+  exit 0
+fi
+if [ "$#" -eq 0 ]; then
+  echo 'Usage: win-powershell <script.ps1> [arguments...]' >&2
+  exit 2
+fi
+for tool in wslpath powershell.exe; do
+  if ! command -v "$tool" >/dev/null 2>&1; then
+    echo "ERROR: $tool is required. Run in WSL with Windows interoperability and Windows PATH enabled." >&2
+    exit 1
+  fi
+done
+
+script="$1"
+shift
+if [ ! -f "$script" ] || [ ! -r "$script" ]; then
+  echo "ERROR: script is not a readable file: $script" >&2
+  exit 1
+fi
+windows_script="$(wslpath -w "$(realpath -- "$script")")"
+exec powershell.exe -NoLogo -NoProfile -NonInteractive -File "$windows_script" "$@"

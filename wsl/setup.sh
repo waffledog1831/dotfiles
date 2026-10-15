@@ -13,6 +13,9 @@ echo "=== wsl config install ==="
 link_path "$WSL_DIR/bash/.bashrc" "$HOME/.bashrc"
 link_path "$WSL_DIR/bash/.bash_aliases" "$HOME/.bash_aliases"
 
+mkdir -p "$HOME/.local/bin"
+link_path "$WSL_DIR/bin/win-powershell" "$HOME/.local/bin/win-powershell"
+
 mkdir -p "$HOME/.config/herdr"
 link_path "$WSL_DIR/herdr/config.toml" "$HOME/.config/herdr/config.toml"
 

@@ -25,7 +25,7 @@ bash wsl/setup.sh
 - Python: pyenv と導入時点の最新安定版、およびビルド依存パッケージ
 - クラウド: gh、AWS CLI、gcloud、Terraform
 - コンテナ: Docker Engine と Compose plugin
-- AI: Claude Code。Codex CLI のインストールとログインは別途必要
+- AI: Claude Code、Codex CLI。ログインはそれぞれ別途必要
 
 導入済みの fnm / pyenv は再ダウンロードしません。セットアップを再実行するとツール更新や Node.js / Python の既定バージョンの設定が行われます。
 
@@ -96,9 +96,38 @@ bash wsl/setup.sh
 
 参照: [Herdr の公式ガイド](https://herdr.dev/docs/quick-start/)
 
+## Windows の Excel / PowerPoint を操作する
+
+Windows 側にデスクトップ版 Office があれば、WSL の Claude Code / Codex から PowerShell と COM（アプリ操作用インターフェース）で操作できます。Windows 側への AI のインストールや `windows/setup.sh` の実行は不要です。
+
+既存環境では `bash wsl/setup.sh` を実行して AI セッションを再起動します。
+WSL の Windows 相互運用と Windows PATH の取り込みが必要です。`command -v powershell.exe` で Windows PowerShell が見つかることを確認してください。
+
+登録状況は次のスクリプトで確認できます。Office 本体は起動しません。
+
+```bash
+cat > office-check.ps1 <<'POWERSHELL'
+$ErrorActionPreference = 'Stop'
+[pscustomobject]@{
+    ExcelRegistered = $null -ne [type]::GetTypeFromProgID('Excel.Application')
+    PowerPointRegistered = $null -ne [type]::GetTypeFromProgID('PowerPoint.Application')
+} | ConvertTo-Json
+POWERSHELL
+~/.local/bin/win-powershell ./office-check.ps1
+```
+
+実際の操作では、AI に目的と対象ファイルを伝え、作業ディレクトリに `.ps1` を作成して同じコマンドで実行させます。登録済みでもライセンス認証やダイアログで停止する場合があるため、初回は Windows で Office を起動して確認してください。
+
+- 日本語を含む `.ps1` は Windows PowerShell 5.1 が読める UTF-8 BOM 付きで保存します。
+- スクリプトのパスはコマンドが変換します。スクリプトに渡すファイル引数は `wslpath -w ./file.xlsx` で変換し、PowerShell 内でも絶対パスを使います。
+- 終了コードは PowerShell の値を返します。スクリプトは `$ErrorActionPreference = 'Stop'` を設定してください。
+- 実行ポリシーや AI の権限設定は変更しません。Windows 側の操作は Linux のサンドボックスの保護範囲外として扱い、必要な承認を得ます。
+- COM はプログラムによる操作です。画面を見てクリックする機能は含みません。
+
 ## 配置される設定
 
 - Bash: `~/.bashrc`、`~/.bash_aliases`
+- Windows PowerShell 呼び出し: `~/.local/bin/win-powershell`
 - Herdr: `~/.config/herdr/config.toml`
 - Git: `~/.gitconfig`、`~/.gitignore_global`、`~/.git-hooks/`
 - Claude Code: `~/.claude/` の設定・スキル・エージェント

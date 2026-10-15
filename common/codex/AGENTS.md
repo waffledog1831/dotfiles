@@ -16,3 +16,8 @@
 
 # 機密情報
 - `.env`、`.env.*`、`secrets/`、認証情報は明示的な指示がない限り読み取らず、ログ・回答・コミットに含めない。
+
+# WSL と Windows Office
+- WSL から Windows の Excel / PowerPoint 本体を使う場合は、作業ディレクトリに PowerShell スクリプトを作り、`~/.local/bin/win-powershell ./script.ps1` で COM を操作する。Windows 側への AI の追加インストールは不要。
+- スクリプトは Windows PowerShell 5.1 用に UTF-8 BOM 付きで保存し、ファイル引数は `wslpath -w` で Windows パスに変換する。
+- Windows プロセスの操作は Linux のサンドボックスで保護されるとは扱わない。必要な承認を得て実行し、既存ファイルは明示的な上書き指示がなければ別名で保存する。画面のクリック操作には別途連携が必要。

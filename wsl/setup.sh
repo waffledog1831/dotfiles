@@ -8,7 +8,7 @@ source "$DOTFILES_DIR/common/lib.sh"
 # 設定の配置のみ。ツールの導入は wsl/install.sh を実行する。
 bash "$DOTFILES_DIR/common/setup.sh"
 
-echo "=== wsl config install ==="
+echo "=== wsl setup ==="
 
 link_path "$WSL_DIR/bash/.bashrc" "$HOME/.bashrc"
 link_path "$WSL_DIR/bash/.bash_aliases" "$HOME/.bash_aliases"
@@ -38,4 +38,4 @@ for skill_dir in "$WSL_DIR/codex/skills/"*/; do
   link_path "${skill_dir%/}" "$HOME/.agents/skills/$skill_name"
 done
 
-echo "=== wsl config done ==="
+echo "=== wsl setup done ==="

@@ -21,13 +21,7 @@
       "Edit(./secrets/**)",
       "Edit(./**/.env)",
       "Edit(./**/.env.*)",
-      "Edit(./**/secrets/**)",
-      "Write(./.env)",
-      "Write(./.env.*)",
-      "Write(./secrets/**)",
-      "Write(./**/.env)",
-      "Write(./**/.env.*)",
-      "Write(./**/secrets/**)"
+      "Edit(./**/secrets/**)"
     ],
     "ask": [
       "Bash(rm *)",

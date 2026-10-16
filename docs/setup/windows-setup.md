@@ -69,7 +69,7 @@ Store 版と非パッケージ版の既存設定ディレクトリを検出し�
 リポジトリの設定へのリンクに置き換える。
 
 既定は `~/repos` で起動する「Ubuntu / Herdr」。`Alt+L` で通常の Ubuntu と
-PowerShell 7 のみ選べる。配色は Catppuccin Mocha、フォントは Cascadia Code 12pt、
+PowerShell 7 も選べる。配色は Catppuccin Mocha、フォントは Cascadia Code 12pt、
 不透明度は 90%。分割やセッション管理は Herdr で行う。
 
 Preview 版は自動配置の対象外。

@@ -10,10 +10,6 @@ link_path() {
     echo "ERROR: $dst is a real directory, not a symlink. Back it up and move it manually." >&2
     return 1
   fi
-  if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
-    echo "unchanged: $dst"
-    return 0
-  fi
   ln -sfn "$src" "$dst"
   echo "linked: $dst"
 }

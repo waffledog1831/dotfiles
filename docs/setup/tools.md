@@ -11,7 +11,7 @@ GUIアプリは基本ここ。
 
 - Git for Windows
 - Claude Code
-- WezTerm
+- Windows Terminal
 - VS Code
 - Android Studio
 - Bruno
@@ -90,5 +90,5 @@ GUIアプリは基本ここ。
 
 | 環境 | 役割 | 代表ツール |
 |------|------|-----------|
-| Windows | 操作UI | WezTerm, VS Code, Android Studio |
+| Windows | 操作UI | Windows Terminal, VS Code, Android Studio |
 | WSL | 開発の母艦CLI環境 | git, ripgrep, gcloud, docker |

@@ -11,7 +11,7 @@ dotfiles/
 │   ├── lib.sh           # リンク配置の共通処理
 │   └── setup.sh         # 共通設定の配置
 ├── windows/             # Windows 専用設定
-│   ├── wezterm/         # WezTerm（PowerShell 7）
+│   ├── terminal/        # Windows Terminal
 │   ├── sakura/          # Sakura Editor
 │   └── setup.sh         # Windows 設定の配置
 ├── wsl/                 # WSL 専用設定

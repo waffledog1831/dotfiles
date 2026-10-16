@@ -1,6 +1,6 @@
 # WSL セットアップガイド
 
-Ubuntu 22.04 LTS 以降を想定。WezTerm で `Alt+L` →「Ubuntu」を選択します。
+Ubuntu 22.04 LTS 以降を想定。Windows Terminal で `Alt+L` →「Ubuntu」を選択します。
 Windows 側のリポジトリとは別に、WSL のホームへクローンしてください。
 
 ## 初回セットアップ
@@ -72,7 +72,7 @@ Docker のサービスを有効化し、実行ユーザーを docker グルー�
 
 ## Herdr
 
-WezTerm で `Alt+L` →「Ubuntu / Herdr」を選択します。通常の「Ubuntu」も利用できます。
+Windows Terminal で `Alt+L` →「Ubuntu / Herdr」を選択します。通常の「Ubuntu」も利用できます。
 Herdr は WSL 内で動作し、既存のセッションがあれば再接続します。
 既存環境へ Herdr だけ追加する場合は、WSL で次を実行してください。
 
@@ -91,7 +91,7 @@ bash wsl/setup.sh
 | ペインを閉じる | `x` |
 | 切断して作業を継続 | `q` |
 
-`Alt+W` は WezTerm 側を閉じる操作です。Herdr 内のペインは `Ctrl+B` → `x` で閉じます。
+Herdr 内のペインは `Ctrl+B` → `x` で閉じます。
 `wsl --shutdown` や PC 再起動では実行中のプロセスは停止します。
 
 参照: [Herdr の公式ガイド](https://herdr.dev/docs/quick-start/)

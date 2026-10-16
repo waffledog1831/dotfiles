@@ -5,7 +5,7 @@
 - **Git Bash**（MSYS2）がインストールされていること
 - **開発者モード** が ON であること（シンボリックリンク作成に必要）
   - 設定 → システム → 開発者向け → 開発者モード: ON
-- **PowerShell 7** がインストールされていること（WezTerm のデフォルトシェル）
+- **PowerShell 7** がインストールされていること（Windows Terminal の PowerShell 7 プロファイル用）
   ```
   winget install Microsoft.PowerShell
   ```
@@ -59,7 +59,6 @@ export MSYS=winsymlinks:nativestrict
 | `common/git/.gitignore_global` | `~/.gitignore_global` | Git のグローバル除外設定 |
 | `common/git/hooks/` | `~/.git-hooks/` | Git のグローバルフック |
 | `windows/terminal/settings.json` | Windows Terminal の `settings.json` | 配色・透過・Ubuntu / Herdr ランチャー |
-| `windows/wezterm/.wezterm.lua` | `~/.wezterm.lua` | WezTerm の設定 |
 | `windows/sakura/sakura.ini` | `~/AppData/Roaming/sakura/sakura.ini` | Sakura Editor の設定 |
 | `windows/powershell/Microsoft.PowerShell_profile.ps1` | `~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1` | PowerShell 7 プロファイル |
 
@@ -77,6 +76,6 @@ Preview 版は自動配置の対象外。
 
 ## WSL (Ubuntu) のセットアップ
 
-WezTerm で `Alt+L` → 「Ubuntu」を選択して起動。
+Windows Terminal で `Alt+L` → 「Ubuntu」を選択して起動。
 
 WSL 環境でのツールインストールや dotfiles の適用手順は [WSL セットアップガイド](wsl-setup.md) を参照。

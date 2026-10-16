@@ -19,7 +19,7 @@
 ## 権限と通知
 
 - `permissions.defaultMode: "auto"` で Bash を含む実行内容を自動審査します。Bash の一律許可はせず、WebFetch / WebSearch は明示的に許可します。
-- `.env`、`.env.*`、`secrets/` はルートと下位ディレクトリの Read / Edit を拒否します。`Edit(path)` は新規作成を含むファイル変更に適用されます。
+- `.env`、`.env.*`、`secrets/` はルートと下位ディレクトリの Read / Edit を拒否します。
 - 削除、force push、hard reset、git clean は確認対象です。
 - 評価順序は deny → ask → allow です。コマンドの文字列ルールはあらゆる迂回を防ぐ境界ではなく、Read / Edit の拒否と自動審査だけを、Bash からの完全な機密隔離とは扱いません。
 - `preferredNotifChannel: "terminal_bell"` で作業完了・承認待ちをターミナルのベルで通知します。音はターミナル側に依存し、WezTerm は既定で `SystemBeep` を使用します。

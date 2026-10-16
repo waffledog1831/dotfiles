@@ -42,14 +42,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# WezTerm に作業ディレクトリを通知する。
-__wezterm_osc7() {
-  printf "\e]7;file://%s%s\e\\" "${HOSTNAME}" "${PWD}"
-}
-if [[ ! " ${PROMPT_COMMAND[*]-} " =~ __wezterm_osc7 ]]; then
-  PROMPT_COMMAND+=(__wezterm_osc7)
-fi
-
 export PATH="$HOME/.local/bin:$HOME/.local/share/fnm:$HOME/.pyenv/bin:$PATH"
 if command -v fnm >/dev/null 2>&1; then
   eval "$(fnm env --use-on-cd)"

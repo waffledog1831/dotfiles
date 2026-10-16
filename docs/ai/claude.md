@@ -22,7 +22,7 @@
 - `.env`、`.env.*`、`secrets/` はルートと下位ディレクトリの Read / Edit を拒否します。
 - 削除、force push、hard reset、git clean は確認対象です。
 - 評価順序は deny → ask → allow です。コマンドの文字列ルールはあらゆる迂回を防ぐ境界ではなく、Read / Edit の拒否と自動審査だけを、Bash からの完全な機密隔離とは扱いません。
-- `preferredNotifChannel: "terminal_bell"` で作業完了・承認待ちをターミナルのベルで通知します。音はターミナル側に依存し、WezTerm は既定で `SystemBeep` を使用します。
+- `preferredNotifChannel: "terminal_bell"` で作業完了・承認待ちをターミナルのベルで通知します。音はターミナル側の設定に依存します。
 - ファイル候補の gitignore 尊重、応答後の所要時間表示、更新チャンネルは既定値を使用します。
 - 帰属表記は `settings.json` に集約し、スキル内では固定しません。
 

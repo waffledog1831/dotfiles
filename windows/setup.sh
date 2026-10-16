@@ -14,13 +14,10 @@ bash "$DOTFILES_DIR/common/setup.sh"
 
 echo "=== windows setup ==="
 
-# PowerShell 7 プロファイル（WezTerm OSC 7 CWD通知など）
+# PowerShell 7 プロファイル
 PS_PROFILE_DIR="$HOME/Documents/PowerShell"
 mkdir -p "$PS_PROFILE_DIR"
 link_path "$WINDOWS_DIR/powershell/Microsoft.PowerShell_profile.ps1" "$PS_PROFILE_DIR/Microsoft.PowerShell_profile.ps1"
-
-# WezTerm
-link_path "$WINDOWS_DIR/wezterm/.wezterm.lua" "$HOME/.wezterm.lua"
 
 TERMINAL_DIRS=(
   "$HOME/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState"

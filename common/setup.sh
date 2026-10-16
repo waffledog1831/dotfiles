@@ -6,7 +6,7 @@ COMMON_DIR="$DOTFILES_DIR/common"
 
 source "$COMMON_DIR/lib.sh"
 
-echo "=== common install ==="
+echo "=== common setup ==="
 
 # 作業用ディレクトリ
 mkdir -p "$HOME/repos"
@@ -16,4 +16,4 @@ link_path "$COMMON_DIR/git/.gitconfig" "$HOME/.gitconfig"
 link_path "$COMMON_DIR/git/.gitignore_global" "$HOME/.gitignore_global"
 link_path "$COMMON_DIR/git/hooks" "$HOME/.git-hooks"
 
-echo "=== common done ==="
+echo "=== common setup done ==="

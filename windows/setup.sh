@@ -12,7 +12,7 @@ source "$DOTFILES_DIR/common/lib.sh"
 # 共通設定を適用
 bash "$DOTFILES_DIR/common/setup.sh"
 
-echo "=== windows install ==="
+echo "=== windows setup ==="
 
 # PowerShell 7 プロファイル（WezTerm OSC 7 CWD通知など）
 PS_PROFILE_DIR="$HOME/Documents/PowerShell"
@@ -36,4 +36,4 @@ SAKURA_DIR="$HOME/AppData/Roaming/sakura"
 mkdir -p "$SAKURA_DIR"
 link_path "$WINDOWS_DIR/sakura/sakura.ini" "$SAKURA_DIR/sakura.ini"
 
-echo "=== windows done ==="
+echo "=== windows setup done ==="

@@ -64,6 +64,16 @@
       "brightWhite": "#a6adc8"
     }
   ],
+  "newTabMenu": [
+    {
+      "type": "profile",
+      "profile": "Ubuntu"
+    },
+    {
+      "type": "profile",
+      "profile": "PowerShell 7"
+    }
+  ],
   "actions": [
     {
       "command": "openNewTabDropdown",

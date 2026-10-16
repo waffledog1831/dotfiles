@@ -72,7 +72,8 @@ Docker のサービスを有効化し、実行ユーザーを docker グルー�
 
 ## Herdr
 
-Windows Terminal で `Alt+L` →「Ubuntu / Herdr」を選択します。通常の「Ubuntu」も利用できます。
+Windows Terminal を起動すると「Ubuntu / Herdr」が開きます。
+`Alt+L` からは通常の「Ubuntu」と「PowerShell 7」を選択できます。
 Herdr は WSL 内で動作し、既存のセッションがあれば再接続します。
 既存環境へ Herdr だけ追加する場合は、WSL で次を実行してください。
 

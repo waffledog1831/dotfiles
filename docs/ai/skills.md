@@ -5,13 +5,10 @@
 
 | スキル名 | 用途 |
 |----------|------|
-| new-branch | 新規作業のブランチを作成。継続作業は現在のブランチを使用 |
-| commit | 作業対象だけを日本語メッセージでコミット |
-| create-pr | 最終レビュー・シンプル化・検証・コミット・push・PR 作成または更新・CI 確認 |
-| review-pr | 根拠付きのレビュー。外部投稿は依頼に含まれる場合のみ |
+| create-pr | ブランチ準備・最終レビュー・シンプル化・検証・コミット・push・PR 作成または更新・CI 確認 |
 | simplify | 意味と振る舞いを保つシンプル化。PR の最後の編集工程でも使用 |
 
-Claude Code では `/commit`、`/create-pr`、`/review-pr 123`、Codex では `$commit`、`$create-pr`、`$review-pr` などで明示的にも呼び出せます。
+Claude Code では `/create-pr`、`/simplify`、Codex では `$create-pr`、`$simplify` で明示的にも呼び出せます。
 定義は `wsl/claude/skills/<名前>/SKILL.md` と `wsl/codex/skills/<名前>/SKILL.md` にあり、手順の本文をそろえます。
 Claude Code は既定の自動選択、Codex は `agents/openai.yaml` の `allow_implicit_invocation: true` を使用します。
 自動選択はツールの権限設定を変更しません。認証・承認・ネットワークの制約があれば停止理由を報告します。

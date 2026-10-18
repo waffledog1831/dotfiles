@@ -3,4 +3,4 @@ interface:
   short_description: "Simplify documents and code while preserving intent"
   default_prompt: "Use $simplify to simplify these documents and code while preserving meaning and behavior."
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

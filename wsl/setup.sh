@@ -33,6 +33,12 @@ link_path "$WSL_DIR/codex/agents" "$CODEX_CONFIG_DIR/agents"
 
 # Codex ユーザースキル（他のスキルは保持する）
 mkdir -p "$HOME/.agents/skills"
+for retired_skill in commit new-branch review-pr; do
+  skill_link="$HOME/.agents/skills/$retired_skill"
+  if [ -L "$skill_link" ] && [ "$(readlink "$skill_link")" = "$WSL_DIR/codex/skills/$retired_skill" ]; then
+    rm "$skill_link"
+  fi
+done
 for skill_dir in "$WSL_DIR/codex/skills/"*/; do
   skill_name="$(basename "$skill_dir")"
   link_path "${skill_dir%/}" "$HOME/.agents/skills/$skill_name"

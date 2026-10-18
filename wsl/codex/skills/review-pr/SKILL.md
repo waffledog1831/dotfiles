@@ -1,6 +1,6 @@
 ---
 name: review-pr
-description: GitHub PRをレビューし、根拠のある不具合とリスクを報告する。投稿は依頼された場合に行う。
+description: GitHub PR のレビューを依頼されたとき、根拠のある不具合とリスクを報告する。外部投稿は依頼に含まれる場合のみ行う。
 ---
 
 # PR レビュー

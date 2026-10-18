@@ -1,7 +1,6 @@
 ---
 name: new-branch
-description: 新規作業のため、デフォルトブランチを基に作業ブランチを作成する。
-disable-model-invocation: true
+description: 新規の変更依頼に着手するとき、デフォルトブランチを基に作業ブランチを作成する。継続作業は既存ブランチを使う。
 ---
 
 # 新規作業ブランチ

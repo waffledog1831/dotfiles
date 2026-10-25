@@ -50,8 +50,8 @@ if command -v pyenv >/dev/null 2>&1; then
   export PYENV_ROOT="$HOME/.pyenv"
   eval "$(pyenv init -)"
 fi
-if [ -d "$HOME/.local/go/bin" ]; then
-  export PATH="$HOME/.local/go/bin:$PATH"
+if [ -d "/usr/local/go/bin" ]; then
+  export PATH="/usr/local/go/bin:$PATH"
 fi
 if command -v go >/dev/null 2>&1; then
   export PATH="$PATH:$(go env GOPATH)/bin"

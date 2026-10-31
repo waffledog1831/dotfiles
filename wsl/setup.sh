@@ -21,7 +21,6 @@ mkdir -p "$HOME/.claude"
 link_path "$WSL_DIR/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
 link_path "$WSL_DIR/claude/settings.json" "$HOME/.claude/settings.json"
 link_path "$WSL_DIR/claude/skills" "$HOME/.claude/skills"
-link_path "$WSL_DIR/claude/agents" "$HOME/.claude/agents"
 
 # Codex（CODEX_HOME 指定時はそのディレクトリを使用）
 CODEX_CONFIG_DIR="${CODEX_HOME:-$HOME/.codex}"
@@ -29,7 +28,14 @@ mkdir -p "$CODEX_CONFIG_DIR"
 link_path "$WSL_DIR/codex/AGENTS.md" "$CODEX_CONFIG_DIR/AGENTS.md"
 link_path "$WSL_DIR/codex/config.toml" "$CODEX_CONFIG_DIR/config.toml"
 
-link_path "$WSL_DIR/codex/agents" "$CODEX_CONFIG_DIR/agents"
+# 廃止したエージェントは、このリポジトリを指すリンクだけを削除する。
+for agent_dir in "$HOME/.claude/agents" "$CODEX_CONFIG_DIR/agents"; do
+  if [ -L "$agent_dir" ]; then
+    case "$(readlink "$agent_dir")" in
+      "$WSL_DIR/claude/agents"|"$WSL_DIR/codex/agents") rm "$agent_dir" ;;
+    esac
+  fi
+done
 
 # Codex ユーザースキル（他のスキルは保持する）
 mkdir -p "$HOME/.agents/skills"

@@ -20,19 +20,3 @@ glob_scan_max_depth = 8
 
 [tui]
 notifications = ["agent-turn-complete", "approval-requested"]
-
-[agents.lilia]
-description = "独立した実装タスク、またはリリアの指名に対応する。普段の実装はメインが担当。"
-config_file = "agents/lilia.toml"
-
-[agents.sion]
-description = "独立した広いコード調査、またはシオンの指名に対応する。小さな検索はメインが担当。"
-config_file = "agents/sion.toml"
-
-[agents.ordos]
-description = "別視点でのコード・設計レビュー、またはオルドスの指名に対応する。"
-config_file = "agents/ordos.toml"
-
-[agents.luca]
-description = "独立したセキュリティレビュー、またはルカの指名に対応する。"
-config_file = "agents/luca.toml"

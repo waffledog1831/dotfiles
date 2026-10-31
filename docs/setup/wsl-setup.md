@@ -102,8 +102,8 @@ Herdr 内のペインは `Ctrl+B` → `x` で閉じます。
 - Bash: `~/.bashrc`、`~/.bash_aliases`
 - Herdr: `~/.config/herdr/config.toml`
 - Git: `~/.gitconfig`、`~/.gitignore_global`、`~/.git-hooks/`
-- Claude Code: `~/.claude/` の設定・スキル・エージェント
-- Codex: `~/.codex/` の設定・役割と `~/.agents/skills/` のスキル
+- Claude Code: `~/.claude/` の設定・スキル
+- Codex: `~/.codex/` の設定と `~/.agents/skills/` のスキル
 
 既存ファイルはシンボリックリンクに置き換わります。必要ならバックアップしてください。
 配置先に実ディレクトリがある場合は内容を削除せず停止します。

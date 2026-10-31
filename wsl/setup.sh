@@ -28,15 +28,6 @@ mkdir -p "$CODEX_CONFIG_DIR"
 link_path "$WSL_DIR/codex/AGENTS.md" "$CODEX_CONFIG_DIR/AGENTS.md"
 link_path "$WSL_DIR/codex/config.toml" "$CODEX_CONFIG_DIR/config.toml"
 
-# 廃止したエージェントは、このリポジトリを指すリンクだけを削除する。
-for agent_dir in "$HOME/.claude/agents" "$CODEX_CONFIG_DIR/agents"; do
-  if [ -L "$agent_dir" ]; then
-    case "$(readlink "$agent_dir")" in
-      "$WSL_DIR/claude/agents"|"$WSL_DIR/codex/agents") rm "$agent_dir" ;;
-    esac
-  fi
-done
-
 # Codex ユーザースキル（他のスキルは保持する）
 mkdir -p "$HOME/.agents/skills"
 for retired_skill in commit new-branch review-pr; do
